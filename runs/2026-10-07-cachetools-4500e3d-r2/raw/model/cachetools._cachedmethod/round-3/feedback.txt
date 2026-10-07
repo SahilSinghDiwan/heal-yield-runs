@@ -1,0 +1,107 @@
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caches_and_counts
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caches_and_counts.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caches_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1139
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_unlocked_caches_and_counts ________________________
+
+    def test_unlocked_caches_and_counts():
+>       class Foo:
+
+heal_yield_generated/test_cachetools__cachedmethod.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    class Foo:
+        def __init__(self):
+            self._cache = {}
+    
+>       @make_descriptor
+         ^^^^^^^^^^^^^^^
+E       TypeError: make_descriptor() missing 2 required positional arguments: 'cache_func' and 'key_func'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:46: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caches_and_counts.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caches_and_counts
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caches_and_counts
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caches_and_counts.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caches_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0950
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_locked_caches_and_counts _________________________
+
+    def test_locked_caches_and_counts():
+        lock = threading.Lock()
+    
+>       class Bar:
+
+heal_yield_generated/test_cachetools__cachedmethod.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    class Bar:
+        def __init__(self):
+            self._cache = {}
+    
+>       @make_descriptor
+         ^^^^^^^^^^^^^^^
+E       TypeError: make_descriptor() missing 2 required positional arguments: 'cache_func' and 'key_func'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:87: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caches_and_counts.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caches_and_counts
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_conditioned_caches_and_counts
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_conditioned_caches_and_counts.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_conditioned_caches_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0935
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________________ test_conditioned_caches_and_counts ______________________
+
+    def test_conditioned_caches_and_counts():
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+    
+>       class Baz:
+
+heal_yield_generated/test_cachetools__cachedmethod.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    class Baz:
+        def __init__(self):
+            self._cache = {}
+    
+>       @make_descriptor
+         ^^^^^^^^^^^^^^^
+E       TypeError: make_descriptor() missing 2 required positional arguments: 'cache_func' and 'key_func'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:126: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_conditioned_caches_and_counts.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_conditioned_caches_and_counts
+1 failed in 0.02s
+
+--- stderr ---
+
+

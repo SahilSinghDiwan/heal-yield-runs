@@ -1,0 +1,35 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0935
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_typedmethodkey_behaves_like_typedkey ___________________
+
+    def test_typedmethodkey_behaves_like_typedkey():
+        class Foo:
+            pass
+    
+        foo = Foo()
+        # typedmethodkey should ignore self and delegate to typedkey
+        mk = keys.typedmethodkey(foo, 3.14, flag=True)
+        hk = keys.typedkey(3.14, flag=True)
+        assert mk == hk
+        # Verify that type information for both positional and kw args is present
+        # The last element of the key should be the type of the positional arg (float)
+        assert mk[-1] is float
+        # The type of the kw value (bool) should appear before the positional types
+        # Find the position of the sentinel to locate kw types
+>       sentinel_index = list(mk).index(keys._kwmark)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: (<class 'cachetools.keys._HashedTuple'>,) is not in list
+
+heal_yield_generated/test_cachetools_keys.py:114: ValueError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+1 failed in 0.01s
+
+--- stderr ---

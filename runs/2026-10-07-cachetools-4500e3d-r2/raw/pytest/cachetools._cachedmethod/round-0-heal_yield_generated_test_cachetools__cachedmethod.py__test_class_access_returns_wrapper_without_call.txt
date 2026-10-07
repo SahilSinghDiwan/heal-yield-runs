@@ -1,0 +1,24 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_class_access_returns_wrapper_without_call.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_class_access_returns_wrapper_without_call
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0953
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_class_access_returns_wrapper_without_call ________________
+
+    def test_class_access_returns_wrapper_without_call():
+        wrapper = Locked.bar  # class attribute, not bound
+        # The wrapper should be a descriptor instance with the expected attributes
+>       assert hasattr(wrapper, "cache")
+E       AssertionError: assert False
+E        +  where False = hasattr(<cachetools._cachedmethod._locked_info.<locals>.Descriptor.Wrapper object at 0x103beaba0>, 'cache')
+
+heal_yield_generated/test_cachetools__cachedmethod.py:192: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_class_access_returns_wrapper_without_call.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_class_access_returns_wrapper_without_call
+1 failed in 0.02s
+
+--- stderr ---

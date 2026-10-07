@@ -1,0 +1,5 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m heal_yield.generators.anthropic_gen --model gpt-oss-120b --unmetered --module cachetools._cachedmethod --source-file src/cachetools/_cachedmethod.py --repo /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools --out-dir /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/generated/cachetools._cachedmethod/round-2 --round 2 --meta-out /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/model/cachetools._cachedmethod/round-2/usage.json --feedback-file /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/model/cachetools._cachedmethod/round-2/feedback.txt
+# returncode: 0
+--- stdout ---
+
+--- stderr ---

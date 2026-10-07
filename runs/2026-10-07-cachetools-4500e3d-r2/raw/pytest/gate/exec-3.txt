@@ -1,0 +1,11 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/gate/exec-3.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caches_and_counts heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_and_clears heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_respects_lock_and_counts heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_prevents_reentrancy_and_counts heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses_only heal_yield_generated/test_cachetools__cached.py::test_bad_cache_value_is_not_stored_but_returned heal_yield_generated/test_cachetools__cached.py::test_wrapper_exposes_expected_attributes heal_yield_generated/test_cachetools_func.py::test_fifo_cache_basic_eviction heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_grows_without_limit heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction_order heal_yield_generated/test_cachetools_func.py::test_ttl_cache_respects_time_to_live heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses_uses_default_parameters heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1124
+--- stdout ---
+...............                                                          [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/gate/exec-3.jsonl -
+15 passed in 0.03s
+
+--- stderr ---

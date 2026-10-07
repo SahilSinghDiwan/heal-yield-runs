@@ -1,0 +1,36 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_grows_without_limit.jsonl heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_grows_without_limit
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0924
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_unbounded_cache_grows_without_limit ___________________
+
+    def test_unbounded_cache_grows_without_limit():
+        """When maxsize=None the cache should grow without bound."""
+        @func.fifo_cache(maxsize=None)
+        def identity(x):
+            return x
+    
+        # Populate with several distinct keys
+        for i in range(10):
+            assert identity(i) == i
+    
+        # The underlying cache should contain all inserted keys
+        # The wrapper created by `cached` stores the cache in the attribute `cache`
+        assert len(identity.cache) == 10
+        # Ensure all keys are present
+        for i in range(10):
+>           assert i in identity.cache
+E           assert 0 in {(0,): 0, (1,): 1, (2,): 2, (3,): 3, ...}
+E            +  where {(0,): 0, (1,): 1, (2,): 2, (3,): 3, ...} = <function test_unbounded_cache_grows_without_limit.<locals>.identity at 0x1042d8720>.cache
+
+heal_yield_generated/test_cachetools_func.py:51: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_grows_without_limit.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_grows_without_limit
+1 failed in 0.02s
+
+--- stderr ---

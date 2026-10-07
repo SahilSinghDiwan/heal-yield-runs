@@ -1,0 +1,18 @@
+{
+  "id": "msg_1641fc685bf1c95aa80d8e24",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport warnings\n\nimport pytest\n\nimport cachetools._cachedmethod as cm\n\n\ndef test_locked_descriptor_uses_custom_lock():\n    \"\"\"Ensure that a custom lock object is used and that caching works.\"\"\"\n    lock_calls = []\n\n    class DummyLock:\n        def __enter__(self):\n            lock_calls.append(\"enter\")\n            return self\n\n        def __exit__(self, exc_type, exc, tb):\n            lock_calls.append(\"exit\")\n            return False\n\n    # lock must be a callable returning a context manager per the implementation\n    def lock_factory(_):\n        return DummyLock()\n\n    def method(self, x):\n        return x + 5\n\n    def cache_factory(self):\n        return self._cache\n\n    def key(self, x):\n        return x\n\n    class MyClass:\n        def __init__(self):\n            self._cache = {}\n\n        foo = cm._wrapper(\n            method=method,\n            cache=cache_factory,\n            key=key,\n            lock=lock_factory,\n            cond=None,\n            info=None,\n        )\n\n    obj = MyClass()\n    # first call \u2013 cache miss (read lock + write lock)\n    assert obj.foo(10) == 15\n    # second call \u2013 cache hit (only read lock)\n    assert obj.foo(10) == 15\n\n    # lock should have been entered and exited:\n    # first call: read lock, then write lock\n    # second call: read lock only (hit)\n    assert lock_calls == [\n        \"enter\", \"exit\",  # first read\n        \"enter\", \"exit\",  # first write\n        \"enter\", \"exit\",  # second read (hit)\n    ]\n\n\ndef test_descriptor_without_dict_raises_type_error():\n    \"\"\"Accessing a cachedmethod on an object without __dict__ should raise TypeError.\"\"\"\n\n    def method(self, x):\n        return x * 2\n\n    def cache(self):\n        return {}\n\n    def key(self, x):\n        return x\n\n    class SlotClass:\n        __slots__ = ()\n\n        foo = cm._wrapper(\n            method=method,\n            cache=cache,\n            key=key,\n            lock=None,\n            cond=None,\n            info=None,\n        )\n\n    obj = SlotClass()\n    # Accessing the descriptor should raise a TypeError because the instance\n    # lacks a __dict__ to store the wrapper.\n    with pytest.raises(TypeError) as exc:\n        _ = obj.foo(1)\n    assert \"No '__dict__' attribute\" in str(exc.value)\n\n\ndef test_classmethod_deprecation_warning():\n    \"\"\"Using @cachedmethod on a classmethod should emit a DeprecationWarning.\"\"\"\n\n    def method(cls, x):\n        return x + 1\n\n    def cache(cls):\n        return {}\n\n    def key(cls, x):\n        return x\n\n    class MyClass:\n        @classmethod\n        def foo(cls, x):\n            return x + 1\n\n        # Apply the wrapper directly to the classmethod function\n        foo = cm._wrapper(\n            method=method,\n            cache=cache,\n            key=key,\n            lock=None,\n            cond=None,\n            info=None,\n        )\n\n    # Access via class should trigger the deprecation warning\n    with warnings.catch_warnings(record=True) as w:\n        warnings.simplefilter(\"always\")\n        result = MyClass.foo(3)\n        assert result == 4\n        # Two warnings: one from _warn_classmethod in _WrapperBase init,\n        # another from the descriptor call path.\n        assert any(issubclass(warn.category, DeprecationWarning) for warn in w)\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 4728,
+    "output_tokens": 1202
+  }
+}

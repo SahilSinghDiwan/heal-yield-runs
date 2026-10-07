@@ -1,0 +1,144 @@
+### heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs_is_hashed_tuple_and_caches_hash
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs_is_hashed_tuple_and_caches_hash.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs_is_hashed_tuple_and_caches_hash
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1109
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs_is_hashed_tuple_and_caches_hash.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0961
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent _______
+
+    def test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent():
+        # Two calls with kwargs in different order should produce equal keys
+        k1 = keys.hashkey(1, b=2, a=3)
+        k2 = keys.hashkey(1, a=3, b=2)
+    
+        # Both should be _HashedTuple instances
+        assert isinstance(k1, keys._HashedTuple)
+        assert isinstance(k2, keys._HashedTuple)
+    
+        # Equality should hold despite different kw order
+        assert k1 == k2
+    
+        # The sentinel _kwmark should appear exactly once between args and kwargs
+        # Since _kwmark is a tuple containing the _HashedTuple class, we can check identity
+        sentinel = keys._kwmark
+        # Convert to list for easier inspection
+        flat = list(k1)
+        # Find the sentinel position
+>       idx = flat.index(sentinel)
+              ^^^^^^^^^^^^^^^^^^^^
+E       ValueError: (<class 'cachetools.keys._HashedTuple'>,) is not in list
+
+heal_yield_generated/test_cachetools_keys.py:50: ValueError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self_and_matches_hashkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0954
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_methodkey_ignores_self_and_matches_hashkey ________________
+
+    def test_methodkey_ignores_self_and_matches_hashkey():
+        class Dummy:
+            pass
+    
+        dummy = Dummy()
+        # methodkey should ignore the first argument (self) and behave like hashkey
+        mk = keys.methodkey(dummy, 10, x=5)
+        hk = keys.hashkey(10, x=5)
+    
+        assert isinstance(mk, keys._HashedTuple)
+        assert mk == hk
+        # Ensure that the sentinel is present when kwargs are used
+>       assert keys._kwmark in mk
+E       AssertionError: assert (<class 'cachetools.keys._HashedTuple'>,) in (10, <class 'cachetools.keys._HashedTuple'>, ('x', 5))
+E        +  where (<class 'cachetools.keys._HashedTuple'>,) = keys._kwmark
+
+heal_yield_generated/test_cachetools_keys.py:70: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self_and_matches_hashkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_typedkey_appends_type_information
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_appends_type_information.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_appends_type_information
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0907
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_appends_type_information.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0935
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_typedmethodkey_behaves_like_typedkey ___________________
+
+    def test_typedmethodkey_behaves_like_typedkey():
+        class Foo:
+            pass
+    
+        foo = Foo()
+        # typedmethodkey should ignore self and delegate to typedkey
+        mk = keys.typedmethodkey(foo, 3.14, flag=True)
+        hk = keys.typedkey(3.14, flag=True)
+        assert mk == hk
+        # Verify that type information for both positional and kw args is present
+        # The last element of the key should be the type of the positional arg (float)
+        assert mk[-1] is float
+        # The type of the kw value (bool) should appear before the positional types
+        # Find the position of the sentinel to locate kw types
+>       sentinel_index = list(mk).index(keys._kwmark)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: (<class 'cachetools.keys._HashedTuple'>,) is not in list
+
+heal_yield_generated/test_cachetools_keys.py:114: ValueError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+1 failed in 0.01s
+
+--- stderr ---
+
+

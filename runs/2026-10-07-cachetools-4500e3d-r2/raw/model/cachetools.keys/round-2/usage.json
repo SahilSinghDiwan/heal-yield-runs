@@ -1,0 +1,13 @@
+{
+  "base_url": "http://localhost:3001",
+  "completion_tokens": 1635,
+  "cost_basis": "unmetered",
+  "emitted": true,
+  "model": "gpt-oss-120b",
+  "pricing_usd_per_mtok": null,
+  "prompt_tokens": 2377,
+  "requested_model": "gpt-oss-120b",
+  "round": 2,
+  "stop_reason": "end_turn",
+  "usd": 0.0
+}

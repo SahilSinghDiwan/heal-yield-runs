@@ -1,0 +1,18 @@
+{
+  "id": "msg_08ca632be57432ad383d4caa",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport pytest\nfrom cachetools import keys\n\n\ndef test_hashkey_without_kwargs_is_hashed_tuple_and_caches_hash():\n    # Simple positional arguments should produce a _HashedTuple\n    k = keys.hashkey(1, \"a\", (2, 3))\n    assert isinstance(k, keys._HashedTuple)\n\n    # The hash should be cached: calling hash() multiple times yields the same value\n    first_hash = hash(k)\n    second_hash = hash(k)\n    assert first_hash == second_hash\n\n\ndef test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent():\n    # Keyword arguments should be sorted and separated by the sentinel\n    k1 = keys.hashkey(1, a=2, b=3)\n    k2 = keys.hashkey(1, b=3, a=2)\n    assert k1 == k2\n\n    # The sentinel should be present exactly once\n    sentinel = keys._kwmark[0]\n    assert k1.count(sentinel) == 1\n\n\ndef test_methodkey_ignores_self_and_matches_hashkey():\n    class Dummy:\n        def __init__(self, val):\n            self.val = val\n\n        def method(self, *args, **kwargs):\n            return keys.methodkey(self, *args, **kwargs)\n\n    d = Dummy(10)\n    # methodkey should ignore the bound instance and behave like hashkey\n    expected = keys.hashkey(1, 2, foo=\"bar\")\n    actual = d.method(1, 2, foo=\"bar\")\n    assert actual == expected\n    assert isinstance(actual, keys._HashedTuple)\n\n\ndef test_typedkey_appends_type_information():\n    # Typed key should include type info for both positional and keyword args\n    k = keys.typedkey(1, \"a\", flag=True, count=5)\n\n    # The key should be a _HashedTuple\n    assert isinstance(k, keys._HashedTuple)\n\n    # Positional argument types are appended at the very end, in order of the args\n    assert k[-2:] == (int, str)\n\n    # Keyword argument types are appended after the sorted keyword items\n    sentinel = keys._kwmark[0]\n    kw_index = k.index(sentinel)\n\n    # Sorted keyword items (by key name)\n    sorted_kwargs = tuple(sorted({\"flag\": True, \"count\": 5}.items()))\n    kw_type_start = kw_index + 1 + len(sorted_kwargs)\n\n    # Types for the sorted keyword values (count -> int, flag -> bool)\n    assert k[kw_type_start:kw_type_start + 2] == (int, bool)\n\n\ndef test_typedmethodkey_behaves_like_typedkey():\n    class Dummy:\n        def __init__(self, val):\n            self.val = val\n\n        def method(self, *args, **kwargs):\n            return keys.typedmethodkey(self, *args, **kwargs)\n\n    d = Dummy(10)\n    expected = keys.typedkey(1, 2, foo=\"bar\")\n    actual = d.method(1, 2, foo=\"bar\")\n    assert actual == expected\n    assert isinstance(actual, keys._HashedTuple)\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 2377,
+    "output_tokens": 1635
+  }
+}

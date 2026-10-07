@@ -1,0 +1,53 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0957
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_fifo_cache_eviction ___________________________
+
+    def test_fifo_cache_eviction():
+        @cachefunc.fifo_cache(maxsize=2)
+        def square(x):
+            return x * x
+    
+        # Fill cache with two entries
+        assert square(1) == 1
+        assert square(2) == 4
+        cache_dict = square.cache  # type: ignore[attr-defined]
+        assert len(cache_dict) == 2
+    
+        # Adding a third entry should evict the first (key for 1)
+        assert square(3) == 9
+        assert len(square.cache) == 2
+        # The value for 1 should no longer be cached
+        key1 = keys.hashkey(square, (1,), {})
+>       assert key1 not in square.cache
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/__init__.py:104: in __contains__
+    return key in self.__data
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = (<function test_fifo_cache_eviction.<locals>.square at 0x10610c680>, (1,), {})
+hash = <slot wrapper '__hash__' of 'tuple' objects>
+
+    def __hash__(self, hash=tuple.__hash__):
+        hashvalue = self.__hashvalue
+        if hashvalue is None:
+>           self.__hashvalue = hashvalue = hash(self)
+                                           ^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+src/cachetools/keys.py:19: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---

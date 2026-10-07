@@ -1,0 +1,28 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedkey_appends_type_information.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_appends_type_information
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0902
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_typedkey_appends_type_information ____________________
+
+    def test_typedkey_appends_type_information():
+        # Typed key should include type info for both positional and keyword args
+        k = keys.typedkey(1, "a", flag=True, count=5)
+    
+        # The key should be a _HashedTuple
+        assert isinstance(k, keys._HashedTuple)
+    
+        # The last elements should be the types of the positional arguments
+>       assert k[-1] is int
+E       AssertionError: assert <class 'str'> is int
+
+heal_yield_generated/test_cachetools_keys.py:72: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedkey_appends_type_information.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedkey_appends_type_information
+1 failed in 0.01s
+
+--- stderr ---

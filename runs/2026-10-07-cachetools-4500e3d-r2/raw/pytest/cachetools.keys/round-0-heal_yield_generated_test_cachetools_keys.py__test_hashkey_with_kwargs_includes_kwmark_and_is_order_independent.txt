@@ -1,0 +1,39 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0961
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent _______
+
+    def test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent():
+        # Two calls with kwargs in different order should produce equal keys
+        k1 = keys.hashkey(1, b=2, a=3)
+        k2 = keys.hashkey(1, a=3, b=2)
+    
+        # Both should be _HashedTuple instances
+        assert isinstance(k1, keys._HashedTuple)
+        assert isinstance(k2, keys._HashedTuple)
+    
+        # Equality should hold despite different kw order
+        assert k1 == k2
+    
+        # The sentinel _kwmark should appear exactly once between args and kwargs
+        # Since _kwmark is a tuple containing the _HashedTuple class, we can check identity
+        sentinel = keys._kwmark
+        # Convert to list for easier inspection
+        flat = list(k1)
+        # Find the sentinel position
+>       idx = flat.index(sentinel)
+              ^^^^^^^^^^^^^^^^^^^^
+E       ValueError: (<class 'cachetools.keys._HashedTuple'>,) is not in list
+
+heal_yield_generated/test_cachetools_keys.py:50: ValueError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_includes_kwmark_and_is_order_independent
+1 failed in 0.01s
+
+--- stderr ---

@@ -1,0 +1,155 @@
+### heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs_hash_caching
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs_hash_caching.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs_hash_caching
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0863
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs_hash_caching.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_order_and_sentinel
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_order_and_sentinel.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_order_and_sentinel
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0917
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_hashkey_with_kwargs_order_and_sentinel __________________
+
+    def test_hashkey_with_kwargs_order_and_sentinel():
+        # kwargs order should not affect the resulting key
+        key1 = keys.hashkey(1, b=2, a=3)
+        key2 = keys.hashkey(1, a=3, b=2)
+        assert key1 == key2
+        assert isinstance(key1, keys._HashedTuple)
+    
+        # The sentinel should be present exactly once and preserve identity
+        sentinel = keys._kwmark
+>       assert key1[1] is sentinel
+E       AssertionError: assert <class 'cachetools.keys._HashedTuple'> is (<class 'cachetools.keys._HashedTuple'>,)
+
+heal_yield_generated/test_cachetools_keys.py:38: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_order_and_sentinel.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_order_and_sentinel
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self.jsonl heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0863
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_typedkey_without_kwargs
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_without_kwargs
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0864
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs_and_type_order
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs_and_type_order.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs_and_type_order
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0930
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_typedkey_with_kwargs_and_type_order ___________________
+
+    def test_typedkey_with_kwargs_and_type_order():
+        # Mixed positional and keyword arguments
+        key = keys.typedkey(1, a="x", b=2)
+    
+        # Expected structure:
+        # (positional args) + sentinel + sorted kwargs + types of kwargs values + types of positional args
+        sentinel = keys._kwmark
+        sorted_kwargs = (("a", "x"), ("b", 2))
+        expected_base = (1, sentinel) + sorted_kwargs
+        expected_types_kwargs = (str, int)  # types of "x" and 2
+        expected_types_args = (int,)        # type of 1
+    
+        # Verify the tuple content step by step
+>       assert tuple(key[: len(expected_base)]) == expected_base
+E       AssertionError: assert (1, <class 'c...x'), ('b', 2)) == (1, (<class '...x'), ('b', 2))
+E         
+E         At index 1 diff: <class 'cachetools.keys._HashedTuple'> != (<class 'cachetools.keys._HashedTuple'>,)
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:79: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs_and_type_order.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs_and_type_order
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaves_like_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0866
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaves_like_typedkey.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_hashedtuple_addition_and_raddition
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashedtuple_addition_and_raddition.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashedtuple_addition_and_raddition
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0857
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashedtuple_addition_and_raddition.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_keys.py::test_hashkey_empty_arguments
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_empty_arguments.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_empty_arguments
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0866
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_empty_arguments.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+

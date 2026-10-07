@@ -1,0 +1,49 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_when_maxsize_none.jsonl heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_when_maxsize_none
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0955
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_unbounded_cache_when_maxsize_none ____________________
+
+    def test_unbounded_cache_when_maxsize_none():
+        """When maxsize=None, the cache should be unbounded (no eviction)."""
+        @cachefunc.lru_cache(maxsize=None)
+        def identity(x):
+            return x
+    
+        # Insert many distinct values
+        for i in range(100):
+            assert identity(i) == i
+    
+        # The underlying cache should contain all entries; we can inspect the wrapper's cache
+        # The cached decorator stores the cache in the wrapper's .cache attribute
+        cache_dict = identity.cache  # type: ignore[attr-defined]
+        assert isinstance(cache_dict, dict)
+        assert len(cache_dict) == 100
+        # Ensure that a previously cached value is still present
+>       assert cache_dict[cachefunc.keys.hashkey(identity, (42,), {})] == 42
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = (<function test_unbounded_cache_when_maxsize_none.<locals>.identity at 0x1019a4a40>, (42,), {})
+hash = <slot wrapper '__hash__' of 'tuple' objects>
+
+    def __hash__(self, hash=tuple.__hash__):
+        hashvalue = self.__hashvalue
+        if hashvalue is None:
+>           self.__hashvalue = hashvalue = hash(self)
+                                           ^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+src/cachetools/keys.py:19: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_when_maxsize_none.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_when_maxsize_none
+1 failed in 0.02s
+
+--- stderr ---

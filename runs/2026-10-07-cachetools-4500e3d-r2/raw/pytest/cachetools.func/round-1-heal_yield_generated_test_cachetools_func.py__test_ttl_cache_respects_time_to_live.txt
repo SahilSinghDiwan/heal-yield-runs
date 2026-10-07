@@ -1,0 +1,53 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_respects_time_to_live.jsonl heal_yield_generated/test_cachetools_func.py::test_ttl_cache_respects_time_to_live
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0944
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_ttl_cache_respects_time_to_live _____________________
+
+    def test_ttl_cache_respects_time_to_live():
+        """TTL cache should expire entries after the given TTL."""
+        # Use a controllable timer
+        start = time.monotonic()
+        timer = lambda: start
+    
+        calls = []
+    
+        @func.ttl_cache(maxsize=2, ttl=0.1, timer=timer)
+        def greet(name):
+            calls.append(name)
+            return f"hi {name}"
+    
+        # First call populates the cache
+        assert greet("alice") == "hi alice"
+        assert calls == ["alice"]
+    
+        # Within TTL, result is cached
+        assert greet("alice") == "hi alice"
+        assert calls == ["alice"]
+    
+        # Advance time beyond TTL
+        nonlocal_start = {"value": start}
+        def advance(dt):
+            nonlocal_start["value"] += dt
+            return nonlocal_start["value"]
+        timer = lambda: advance(0.2)
+    
+        # The cached entry should be considered expired
+        assert greet("alice") == "hi alice"
+>       assert calls == ["alice", "alice"]
+E       AssertionError: assert ['alice'] == ['alice', 'alice']
+E         
+E         Right contains one more item: 'alice'
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:131: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_respects_time_to_live.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_ttl_cache_respects_time_to_live
+1 failed in 0.02s
+
+--- stderr ---

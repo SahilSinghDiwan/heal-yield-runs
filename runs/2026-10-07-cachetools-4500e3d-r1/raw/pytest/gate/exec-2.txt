@@ -1,0 +1,11 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/gate/exec-2.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_and_counts_hits_misses heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_behaves_like_unlocked heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_with_info_counts_hits_and_misses heal_yield_generated/test_cachetools__cached.py::test_uncached_info_wrapper_counts_misses heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure heal_yield_generated/test_cachetools_func.py::test_cache_parameters_reflect_arguments heal_yield_generated/test_cachetools_func.py::test_typed_flag_affects_key heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_when_maxsize_none
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1020
+--- stdout ---
+..........                                                               [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/gate/exec-2.jsonl -
+10 passed in 0.02s
+
+--- stderr ---

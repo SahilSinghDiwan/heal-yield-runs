@@ -1,0 +1,34 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_typed_cache_distinguishes_int_and_float.jsonl heal_yield_generated/test_cachetools_func.py::test_typed_cache_distinguishes_int_and_float
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0929
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_typed_cache_distinguishes_int_and_float _________________
+
+    def test_typed_cache_distinguishes_int_and_float():
+        """Typed caches must treat int and float arguments as distinct keys."""
+        @func.fifo_cache(maxsize=4, typed=True)
+        def echo(x):
+            return x
+    
+        # Call with int and float that are numerically equal
+        assert echo(1) == 1
+        assert echo(1.0) == 1.0
+    
+        # Both should be cached separately
+        assert len(echo.cache) == 2
+>       assert (1,) in echo.cache          # int key
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert (1,) in FIFOCache({(1, <class 'int'>): 1, (1.0, <class 'float'>): 1.0}, maxsize=4, currsize=2)
+E        +  where FIFOCache({(1, <class 'int'>): 1, (1.0, <class 'float'>): 1.0}, maxsize=4, currsize=2) = <function test_typed_cache_distinguishes_int_and_float.<locals>.echo at 0x105eb0860>.cache
+
+heal_yield_generated/test_cachetools_func.py:63: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_typed_cache_distinguishes_int_and_float.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_typed_cache_distinguishes_int_and_float
+1 failed in 0.02s
+
+--- stderr ---

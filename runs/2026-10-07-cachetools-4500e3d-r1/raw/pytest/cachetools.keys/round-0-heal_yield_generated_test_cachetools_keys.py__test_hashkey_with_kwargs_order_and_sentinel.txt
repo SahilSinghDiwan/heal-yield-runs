@@ -1,0 +1,29 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_order_and_sentinel.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_order_and_sentinel
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0917
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_hashkey_with_kwargs_order_and_sentinel __________________
+
+    def test_hashkey_with_kwargs_order_and_sentinel():
+        # kwargs order should not affect the resulting key
+        key1 = keys.hashkey(1, b=2, a=3)
+        key2 = keys.hashkey(1, a=3, b=2)
+        assert key1 == key2
+        assert isinstance(key1, keys._HashedTuple)
+    
+        # The sentinel should be present exactly once and preserve identity
+        sentinel = keys._kwmark
+>       assert key1[1] is sentinel
+E       AssertionError: assert <class 'cachetools.keys._HashedTuple'> is (<class 'cachetools.keys._HashedTuple'>,)
+
+heal_yield_generated/test_cachetools_keys.py:38: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_order_and_sentinel.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_order_and_sentinel
+1 failed in 0.01s
+
+--- stderr ---

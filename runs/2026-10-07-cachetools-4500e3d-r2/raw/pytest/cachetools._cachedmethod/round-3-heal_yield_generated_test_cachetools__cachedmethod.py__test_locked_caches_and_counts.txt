@@ -1,0 +1,52 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caches_and_counts.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caches_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1038
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_locked_caches_and_counts _________________________
+
+    def test_locked_caches_and_counts():
+        """The locked descriptor should behave like the unlocked one but be thread‑safe."""
+        lock = threading.Lock()
+    
+        class Bar:
+            def __init__(self):
+                self._cache = {}
+                self.calls = 0
+    
+            @make_descriptor(simple_cache, simple_key, lock=lock, info=simple_info)
+            def compute(self, x):
+                self.calls += 1
+                return x + 5
+    
+        b = Bar()
+    
+        # First call stores the result.
+>       assert b.compute(10) == 15
+               ^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:205: in __call__
+    lock = self.cache_lock
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <cachetools._cachedmethod._locked_info.<locals>.Descriptor.Wrapper object at 0x1028ac6e0>
+
+    @property
+    def cache_lock(self):
+>       return self.__lock(self._obj)
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: '_thread.lock' object is not callable
+
+src/cachetools/_cachedmethod.py:59: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caches_and_counts.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caches_and_counts
+1 failed in 0.02s
+
+--- stderr ---

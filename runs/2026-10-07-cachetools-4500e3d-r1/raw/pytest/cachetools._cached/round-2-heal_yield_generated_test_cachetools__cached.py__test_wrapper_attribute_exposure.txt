@@ -1,0 +1,39 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.jsonl heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0921
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_wrapper_attribute_exposure ________________________
+
+    def test_wrapper_attribute_exposure():
+        """All wrappers should expose the expected attributes."""
+        lock = threading.Lock()
+        cond = threading.Condition()
+        cache = {}
+        # Wrapper with both lock and condition, and info
+        wrapper = cached._wrapper(
+            func=lambda x: x,
+            cache=cache,
+            key=simple_key,
+            lock=lock,
+            cond=cond,
+            info=info_tuple,
+        )
+        # Standard function attributes
+        assert isinstance(wrapper, types.FunctionType)
+>       assert wrapper.__name__ == "wrapper"
+E       AssertionError: assert '<lambda>' == 'wrapper'
+E         
+E         - wrapper
+E         + <lambda>
+
+heal_yield_generated/test_cachetools__cached.py:238: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure
+1 failed in 0.02s
+
+--- stderr ---

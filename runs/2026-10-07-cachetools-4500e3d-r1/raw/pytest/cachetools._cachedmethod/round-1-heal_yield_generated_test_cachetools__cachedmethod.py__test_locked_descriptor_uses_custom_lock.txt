@@ -1,0 +1,70 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0899
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_locked_descriptor_uses_custom_lock ____________________
+
+    def test_locked_descriptor_uses_custom_lock():
+        """Ensure that a custom lock object is used and that caching works."""
+    
+        lock_calls = []
+    
+        class DummyLock:
+            def __enter__(self):
+                lock_calls.append("enter")
+                return self
+    
+            def __exit__(self, exc_type, exc, tb):
+                lock_calls.append("exit")
+                return False
+    
+        # lock must be a callable returning a context manager per the implementation
+        def lock_factory(_):
+            return DummyLock()
+    
+        def method(self, x):
+            return x + 5
+    
+        def cache_factory(self):
+            return self._cache
+    
+        def key(self, x):
+            return x
+    
+        class MyClass:
+            def __init__(self):
+                self._cache = {}
+    
+            foo = cm._wrapper(
+                method=method,
+                cache=cache_factory,
+                key=key,
+                lock=lock_factory,
+                cond=None,
+                info=None,
+            )
+    
+        obj = MyClass()
+        # first call – cache miss
+        assert obj.foo(10) == 15
+        # second call – cache hit (should still use the lock)
+        assert obj.foo(10) == 15
+    
+        # lock should have been entered and exited twice (once per call)
+>       assert lock_calls == ["enter", "exit", "enter", "exit"]
+E       AssertionError: assert ['enter', 'ex...nter', 'exit'] == ['enter', 'ex...nter', 'exit']
+E         
+E         Left contains 2 more items, first extra item: 'enter'
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cachedmethod.py:105: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+1 failed in 0.01s
+
+--- stderr ---

@@ -1,0 +1,74 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0926
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_locked_descriptor_uses_custom_lock ____________________
+
+    def test_locked_descriptor_uses_custom_lock():
+        """Ensure that a custom lock object is used and that caching works."""
+        lock_calls = []
+    
+        class DummyLock:
+            def __enter__(self):
+                lock_calls.append("enter")
+                return self
+    
+            def __exit__(self, exc_type, exc, tb):
+                lock_calls.append("exit")
+                return False
+    
+        def method(self, x):
+            return x + 5
+    
+        def cache_factory(self):
+            return self._cache
+    
+        def key(self, x):
+            return x
+    
+        class MyClass:
+            def __init__(self):
+                self._cache = {}
+    
+            foo = cm._wrapper(
+                method=method,
+                cache=cache_factory,
+                key=key,
+                lock=DummyLock(),
+                cond=None,
+                info=None,
+            )
+    
+        obj = MyClass()
+        # first call – cache miss
+>       assert obj.foo(10) == 15
+               ^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:350: in __call__
+    return wrapper(self._obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <heal_yield_generated.test_cachetools__cachedmethod.test_locked_descriptor_uses_custom_lock.<locals>.MyClass object at 0x104c006e0>
+args = (10,), kwargs = {}
+
+    def wrapper(self, *args, **kwargs):
+        c = cache(self)
+        k = key(self, *args, **kwargs)
+>       with lock(self):
+             ^^^^^^^^^^
+E       TypeError: 'DummyLock' object is not callable
+
+src/cachetools/_cachedmethod.py:324: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+1 failed in 0.02s
+
+--- stderr ---

@@ -1,0 +1,18 @@
+{
+  "id": "msg_fe9e93c13ce7d7f4f5a55f18",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport pickle\n\nimport pytest\n\n# Import the module under test using its dotted path\nfrom cachetools import keys\n\n\ndef test_hashkey_unhashable_argument_raises():\n    \"\"\"hashkey should raise TypeError when any argument is unhashable.\"\"\"\n    unhashable = [1, 2, 3]  # list is unhashable\n    with pytest.raises(TypeError):\n        keys.hashkey(unhashable)\n\n\ndef test_typedkey_unhashable_argument_raises():\n    \"\"\"typedkey should raise TypeError when any argument is unhashable.\"\"\"\n    unhashable = {1: \"a\"}  # dict is unhashable\n    with pytest.raises(TypeError):\n        keys.typedkey(unhashable)\n\n\ndef test_typedkey_only_kwargs_includes_correct_type_order():\n    \"\"\"\n    When only keyword arguments are supplied, typedkey must include the\n    types of the kwarg values (in sorted key order) and no extra\n    positional\u2011argument types.\n    \"\"\"\n    kw = {\"b\": 10, \"a\": \"x\"}\n    # Build the expected key step by step\n    # 1. args part is empty tuple\n    # 2. sentinel\n    sentinel = keys._kwmark\n    # 3. sorted kwargs items\n    sorted_items = tuple(sorted(kw.items()))\n    # 4. types for kwargs values in the same order\n    kw_types = tuple(type(v) for _, v in sorted_items)\n\n    expected = keys._HashedTuple(() + sentinel + sorted_items) + kw_types\n    result = keys.typedkey(**kw)\n\n    assert isinstance(result, keys._HashedTuple)\n    assert result == expected\n    # Ensure the hash can be computed (i.e., the key is hashable)\n    assert isinstance(hash(result), int)\n\n\ndef test_hashedtuple_pickle_roundtrip():\n    \"\"\"\n    A _HashedTuple should survive a pickle round\u2011trip, preserving both\n    equality and hash value.\n    \"\"\"\n    original = keys._HashedTuple((1, \"a\", (2, 3)))\n    # Compute hash before pickling to trigger caching\n    pre_hash = hash(original)\n\n    data = pickle.dumps(original)\n    restored = pickle.loads(data)\n\n    # Equality and hash must match the original\n    assert restored == original\n    assert hash(restored) == pre_hash\n    # The restored object should also be an instance of _HashedTuple\n    assert isinstance(restored, keys._HashedTuple)\n\n\ndef test_hashkey_multiple_hash_calls_return_same_value():\n    \"\"\"\n    The hash of a _HashedTuple should be cached; calling hash repeatedly\n    must return the same integer without recomputing.\n    \"\"\"\n    key = keys.hashkey(1, 2, a=3)\n    first = hash(key)\n    second = hash(key)\n    assert first == second\n    # The cached hash value should be stored on the instance; we can\n    # indirectly verify that the attribute exists after the first call.\n    # (Accessing the private name is acceptable in tests.)\n    assert getattr(key, \"_HashedTuple__hashvalue\") == first\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 2984,
+    "output_tokens": 1335
+  }
+}

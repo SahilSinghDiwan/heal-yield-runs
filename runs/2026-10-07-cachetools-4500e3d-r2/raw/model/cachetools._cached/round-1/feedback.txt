@@ -1,0 +1,84 @@
+### heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_and_clears
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_unlocked_wrapper_caches_and_clears.jsonl heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_and_clears
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0908
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_unlocked_wrapper_caches_and_clears.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_respects_lock_and_counts
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_respects_lock_and_counts.jsonl heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_respects_lock_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0915
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_respects_lock_and_counts.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_prevents_reentrancy_and_counts
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_prevents_reentrancy_and_counts.jsonl heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_prevents_reentrancy_and_counts
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0912
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_prevents_reentrancy_and_counts.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses_only
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_uncached_with_info_counts_misses_only.jsonl heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses_only
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0920
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_uncached_with_info_counts_misses_only.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cached.py::test_bad_cache_value_is_not_stored_but_returned
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_bad_cache_value_is_not_stored_but_returned.jsonl heal_yield_generated/test_cachetools__cached.py::test_bad_cache_value_is_not_stored_but_returned
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0924
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_bad_cache_value_is_not_stored_but_returned.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cached.py::test_wrapper_exposes_expected_attributes
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_wrapper_exposes_expected_attributes.jsonl heal_yield_generated/test_cachetools__cached.py::test_wrapper_exposes_expected_attributes
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0940
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_wrapper_exposes_expected_attributes.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+

@@ -1,0 +1,55 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0908
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_descriptor_without_dict_raises_type_error ________________
+
+    def test_descriptor_without_dict_raises_type_error():
+        """Objects without a __dict__ (e.g., slots) should raise TypeError when used."""
+        def method(self, x):
+            return x
+    
+        def cache_factory(self):
+            return self._cache
+    
+        def key(self, x):
+            return x
+    
+        class SlotClass:
+            __slots__ = ["_cache"]
+    
+            def __init__(self):
+                self._cache = {}
+    
+            foo = cm._wrapper(
+                method=method,
+                cache=cache_factory,
+                key=key,
+                lock=None,
+                cond=None,
+                info=None,
+            )
+    
+        obj = SlotClass()
+        # Accessing the descriptor should raise TypeError because __dict__ is missing
+>       with pytest.raises(TypeError) as exc:
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE TypeError
+
+heal_yield_generated/test_cachetools__cachedmethod.py:142: Failed
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:143: DeprecationWarning: No '__dict__' attribute on 'SlotClass' instance to cache 'foo' property.
+    obj.foo(1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+1 failed, 1 warning in 0.01s
+
+--- stderr ---

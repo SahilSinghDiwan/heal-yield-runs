@@ -1,0 +1,54 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0958
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_rr_cache_deterministic_eviction _____________________
+
+    def test_rr_cache_deterministic_eviction():
+        # deterministic choice: always pick the first element
+        def first_choice(seq):
+            return seq[0]
+    
+        @cachefunc.rr_cache(maxsize=2, choice=first_choice)
+        def inc(x):
+            return x + 1
+    
+        # Fill cache
+        assert inc(1) == 2
+        assert inc(2) == 3
+        # Adding third entry should evict the first inserted (key for 1)
+        assert inc(3) == 4
+        cache_dict = inc.cache  # type: ignore[attr-defined]
+        assert len(cache_dict) == 2
+        key1 = keys.hashkey(inc, (1,), {})
+>       assert key1 not in cache_dict
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/__init__.py:104: in __contains__
+    return key in self.__data
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = (<function test_rr_cache_deterministic_eviction.<locals>.inc at 0x103bf07c0>, (1,), {})
+hash = <slot wrapper '__hash__' of 'tuple' objects>
+
+    def __hash__(self, hash=tuple.__hash__):
+        hashvalue = self.__hashvalue
+        if hashvalue is None:
+>           self.__hashvalue = hashvalue = hash(self)
+                                           ^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+src/cachetools/keys.py:19: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction
+1 failed in 0.02s
+
+--- stderr ---

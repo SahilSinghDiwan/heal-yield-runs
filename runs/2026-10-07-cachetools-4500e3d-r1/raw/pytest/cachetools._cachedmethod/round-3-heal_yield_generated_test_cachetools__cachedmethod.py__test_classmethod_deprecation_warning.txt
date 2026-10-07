@@ -1,0 +1,55 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecation_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecation_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0886
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_classmethod_deprecation_warning _____________________
+
+    def test_classmethod_deprecation_warning():
+        """Using @cachedmethod on a classmethod should emit a DeprecationWarning."""
+    
+        def method(cls, x):
+            return x + 1
+    
+        def cache(cls):
+            return {}
+    
+        def key(cls, x):
+            return x
+    
+        class MyClass:
+            @classmethod
+            def foo(cls, x):
+                return x + 1
+    
+            # Apply the wrapper directly to the classmethod function
+            foo = cm._wrapper(
+                method=method,
+                cache=cache,
+                key=key,
+                lock=None,
+                cond=None,
+                info=None,
+            )
+    
+        # Access via class should trigger the deprecation warning
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            result = MyClass.foo(3)
+            assert result == 4
+            # Two warnings: one from _warn_classmethod in _WrapperBase init,
+            # another from the descriptor call path.
+>           assert any(issubclass(warn.category, DeprecationWarning) for warn in w)
+E           assert False
+E            +  where False = any(<generator object test_classmethod_deprecation_warning.<locals>.<genexpr> at 0x103a68040>)
+
+heal_yield_generated/test_cachetools__cachedmethod.py:129: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecation_warning.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecation_warning
+1 failed in 0.01s
+
+--- stderr ---

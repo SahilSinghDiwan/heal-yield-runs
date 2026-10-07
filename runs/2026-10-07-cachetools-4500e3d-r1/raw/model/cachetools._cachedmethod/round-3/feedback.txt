@@ -1,0 +1,112 @@
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1328
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_locked_descriptor_uses_custom_lock ____________________
+
+    def test_locked_descriptor_uses_custom_lock():
+        """Ensure that a custom lock object is used and that caching works."""
+        lock_calls = []
+    
+        class DummyLock:
+            def __enter__(self):
+                lock_calls.append("enter")
+                return self
+    
+            def __exit__(self, exc_type, exc, tb):
+                lock_calls.append("exit")
+                return False
+    
+        # lock must be a callable returning a context manager per the implementation
+        def lock_factory(_):
+            return DummyLock()
+    
+        def method(self, x):
+            return x + 5
+    
+        def cache_factory(self):
+            return self._cache
+    
+        def key(self, x):
+            return x
+    
+        class MyClass:
+            def __init__(self):
+                self._cache = {}
+    
+            foo = cm._wrapper(
+                method=method,
+                cache=cache_factory,
+                key=key,
+                lock=lock_factory,
+                cond=None,
+                info=None,
+            )
+    
+        obj = MyClass()
+        # first call – cache miss
+        assert obj.foo(10) == 15
+        # second call – cache hit (still uses the lock for the read path)
+        assert obj.foo(10) == 15
+    
+        # lock should have been entered and exited twice per call:
+        # once for the read attempt and once for the write/commit attempt.
+>       assert lock_calls == [
+            "enter", "exit",  # first read
+            "enter", "exit",  # first write
+            "enter", "exit",  # second read (hit)
+            "enter", "exit",  # second write (no-op but still entered)
+        ]
+E       AssertionError: assert ['enter', 'ex...nter', 'exit'] == ['enter', 'ex..., 'exit', ...]
+E         
+E         Right contains 2 more items, first extra item: 'enter'
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cachedmethod.py:55: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_descriptor_uses_custom_lock.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_descriptor_uses_custom_lock
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0839
+--- stdout ---
+.                                                                        [100%]
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:103: DeprecationWarning: No '__dict__' attribute on 'SlotClass' instance to cache 'foo' property.
+    assert obj.foo.cache == {2: 6}
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl -
+1 passed, 1 warning in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecation_warning
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecation_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecation_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0839
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecation_warning.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+

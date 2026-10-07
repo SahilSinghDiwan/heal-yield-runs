@@ -1,0 +1,50 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_basic_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_fifo_cache_basic_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1014
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_fifo_cache_basic_eviction ________________________
+
+    def test_fifo_cache_basic_eviction():
+        """FIFO cache should keep at most `maxsize` entries and evict the oldest."""
+        calls = []
+    
+        @func.fifo_cache(maxsize=2)
+        def greet(name):
+            calls.append(name)
+            return f"hi {name}"
+    
+        # First two distinct calls are cached
+        assert greet("alice") == "hi alice"
+        assert greet("bob") == "hi bob"
+        # No recomputation yet
+        assert calls == ["alice", "bob"]
+    
+        # Third distinct call forces eviction of the first (alice)
+        assert greet("carol") == "hi carol"
+        # "carol" is new, so a new call is recorded
+        assert calls == ["alice", "bob", "carol"]
+    
+        # "alice" was evicted, so calling again recomputes
+        assert greet("alice") == "hi alice"
+        assert calls == ["alice", "bob", "carol", "alice"]
+    
+        # "bob" is still cached
+        assert greet("bob") == "hi bob"
+        # No new call recorded for bob
+>       assert calls == ["alice", "bob", "carol", "alice"]
+E       AssertionError: assert ['alice', 'bo...alice', 'bob'] == ['alice', 'bo...rol', 'alice']
+E         
+E         Left contains one more item: 'bob'
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:37: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_basic_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_fifo_cache_basic_eviction
+1 failed in 0.02s
+
+--- stderr ---

@@ -1,0 +1,17 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0839
+--- stdout ---
+.                                                                        [100%]
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:103: DeprecationWarning: No '__dict__' attribute on 'SlotClass' instance to cache 'foo' property.
+    assert obj.foo.cache == {2: 6}
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl -
+1 passed, 1 warning in 0.01s
+
+--- stderr ---

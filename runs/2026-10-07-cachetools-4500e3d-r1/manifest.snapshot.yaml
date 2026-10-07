@@ -1,0 +1,58 @@
+manifest_version: 1.0.1
+declared: 2026-09-14
+module_selection_rule: 'Applied identically to every repo; never hand-picked. Take
+  the 5 source modules
+
+  with the highest statement count, where a module is a .py file under the
+
+  package root, excluding: __init__.py, __main__.py, conftest.py, setup.py,
+
+  anything matching _compat*/compat*/_version*/version*, anything under a
+
+  tests/, test/, testing/, .tox/, .venv/, build/ or docs/ directory, and any
+
+  module with fewer than 20 statements. Ties broken by path, ascending.
+
+  Statement counts come from heal-yield''s own AST walk (heal_yield/modules.py),
+
+  which approximates coverage.py''s statement definition and is NOT identical to
+
+  it. A reader can derive the exact module list from the SHA and that code alone.
+
+  (v1.0.0 said the counts came from coverage.py; that was wrong. Amended in
+
+  v1.0.1 before any run existed.)
+
+  '
+baseline_rule: 'Before a run, the target module''s existing tests are removed, and
+  baseline
+
+  coverage is measured without them. Every target therefore starts from the same
+
+  place and heal yield is not confounded by how well-tested the package already
+
+  was. This is NOT a claim to improve on the maintainers'' suites.
+
+  '
+policy:
+  headline_average_over: headline
+  repetitions: 5
+  truncated_runs_may_be_a_headline_rep: false
+  change_control: 'Adding or repinning a repo is a minor version bump of this manifest
+    with a
+
+    changelog entry naming the reason. Removing a repo requires a stated reason,
+
+    and that repo''s last published numbers stay published.
+
+    '
+repos:
+- name: cachetools
+  repo: https://github.com/tkem/cachetools
+  tag: v7.1.8
+  sha: 4500e3d04288738d25acbb4973eb3c3e1bf41db9
+  tag_date: 2026-08-31
+  license: MIT
+  domain: cache eviction policies
+  tier: headline
+  v1_run: true

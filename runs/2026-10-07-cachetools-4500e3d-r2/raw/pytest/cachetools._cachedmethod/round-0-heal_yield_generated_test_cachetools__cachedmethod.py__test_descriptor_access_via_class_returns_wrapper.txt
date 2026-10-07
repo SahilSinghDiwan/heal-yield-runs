@@ -1,0 +1,41 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_access_via_class_returns_wrapper.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_access_via_class_returns_wrapper
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0965
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_descriptor_access_via_class_returns_wrapper _______________
+
+    def test_descriptor_access_via_class_returns_wrapper():
+        # Access through the class returns the descriptor (wrapper) itself
+        wrapper = Unlocked.foo
+        # The wrapper should have the cache property (callable returning the cache)
+        dummy = Unlocked()
+        # The cache property resolves to the instance's cache dict
+>       assert wrapper.cache(dummy) == dummy._cache
+               ^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:51: in cache
+    return self.__cache(self._obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None
+
+    def make_cache(self):
+        """Return a dict stored on the instance."""
+>       return self._cache
+               ^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute '_cache'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:12: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_access_via_class_returns_wrapper.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_access_via_class_returns_wrapper
+1 failed in 0.02s
+
+--- stderr ---

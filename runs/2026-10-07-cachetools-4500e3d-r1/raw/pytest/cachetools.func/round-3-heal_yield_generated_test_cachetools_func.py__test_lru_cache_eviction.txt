@@ -1,0 +1,52 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0961
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_lru_cache_eviction ____________________________
+
+    def test_lru_cache_eviction():
+        @cachefunc.lru_cache(maxsize=2)
+        def cube(x):
+            return x * x * x
+    
+        # Populate cache
+        assert cube(1) == 1
+        assert cube(2) == 8
+        # Access 1 to make it most-recently used
+        assert cube(1) == 1
+        # Insert a new value, should evict 2 (least recently used)
+        assert cube(3) == 27
+        cache_dict = cube.cache  # type: ignore[attr-defined]
+        assert len(cache_dict) == 2
+        key2 = keys.hashkey(cube, (2,), {})
+>       assert key2 not in cache_dict
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/__init__.py:104: in __contains__
+    return key in self.__data
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = (<function test_lru_cache_eviction.<locals>.cube at 0x104260680>, (2,), {})
+hash = <slot wrapper '__hash__' of 'tuple' objects>
+
+    def __hash__(self, hash=tuple.__hash__):
+        hashvalue = self.__hashvalue
+        if hashvalue is None:
+>           self.__hashvalue = hashvalue = hash(self)
+                                           ^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+src/cachetools/keys.py:19: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---

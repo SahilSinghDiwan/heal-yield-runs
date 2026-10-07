@@ -1,0 +1,31 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_slots_instance_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_slots_instance_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0944
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_slots_instance_raises_type_error _____________________
+
+    def test_slots_instance_raises_type_error():
+>       obj = SlotsOnly()
+              ^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <heal_yield_generated.test_cachetools__cachedmethod.SlotsOnly object at 0x10197be40>
+
+    def __init__(self):
+>       self._cache = {}
+        ^^^^^^^^^^^
+E       AttributeError: 'SlotsOnly' object has no attribute '_cache' and no __dict__ for setting new attributes
+
+heal_yield_generated/test_cachetools__cachedmethod.py:137: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_slots_instance_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_slots_instance_raises_type_error
+1 failed in 0.02s
+
+--- stderr ---

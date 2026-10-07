@@ -1,0 +1,33 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self_and_matches_hashkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0954
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_methodkey_ignores_self_and_matches_hashkey ________________
+
+    def test_methodkey_ignores_self_and_matches_hashkey():
+        class Dummy:
+            pass
+    
+        dummy = Dummy()
+        # methodkey should ignore the first argument (self) and behave like hashkey
+        mk = keys.methodkey(dummy, 10, x=5)
+        hk = keys.hashkey(10, x=5)
+    
+        assert isinstance(mk, keys._HashedTuple)
+        assert mk == hk
+        # Ensure that the sentinel is present when kwargs are used
+>       assert keys._kwmark in mk
+E       AssertionError: assert (<class 'cachetools.keys._HashedTuple'>,) in (10, <class 'cachetools.keys._HashedTuple'>, ('x', 5))
+E        +  where (<class 'cachetools.keys._HashedTuple'>,) = keys._kwmark
+
+heal_yield_generated/test_cachetools_keys.py:70: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_ignores_self_and_matches_hashkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self_and_matches_hashkey
+1 failed in 0.01s
+
+--- stderr ---

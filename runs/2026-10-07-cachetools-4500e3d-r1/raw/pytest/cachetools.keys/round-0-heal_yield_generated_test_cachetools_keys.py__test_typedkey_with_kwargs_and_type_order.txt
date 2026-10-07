@@ -1,0 +1,36 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs_and_type_order.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs_and_type_order
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0930
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_typedkey_with_kwargs_and_type_order ___________________
+
+    def test_typedkey_with_kwargs_and_type_order():
+        # Mixed positional and keyword arguments
+        key = keys.typedkey(1, a="x", b=2)
+    
+        # Expected structure:
+        # (positional args) + sentinel + sorted kwargs + types of kwargs values + types of positional args
+        sentinel = keys._kwmark
+        sorted_kwargs = (("a", "x"), ("b", 2))
+        expected_base = (1, sentinel) + sorted_kwargs
+        expected_types_kwargs = (str, int)  # types of "x" and 2
+        expected_types_args = (int,)        # type of 1
+    
+        # Verify the tuple content step by step
+>       assert tuple(key[: len(expected_base)]) == expected_base
+E       AssertionError: assert (1, <class 'c...x'), ('b', 2)) == (1, (<class '...x'), ('b', 2))
+E         
+E         At index 1 diff: <class 'cachetools.keys._HashedTuple'> != (<class 'cachetools.keys._HashedTuple'>,)
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:79: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-07-cachetools-4500e3d/raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs_and_type_order.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs_and_type_order
+1 failed in 0.01s
+
+--- stderr ---

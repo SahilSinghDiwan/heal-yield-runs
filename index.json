@@ -1,0 +1,38 @@
+[
+ {
+  "dir": "runs/2026-10-07-cachetools-4500e3d-r1",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-07",
+  "status": "complete",
+  "headline_eligible": true,
+  "model": "gpt-oss-120b",
+  "n": 26,
+  "first_pass_green_pct": 26.9,
+  "post_heal_green_pct": 38.5,
+  "heal_yield_pct": 15.8,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "f64ced1",
+  "notes": [
+   "cost rendered as $0.0000 in report.md; the cost was UNMETERED (free endpoint), not zero. Fixed in heal-yield b2b7b3b; this run is not edited, per POLICY.md."
+  ]
+ },
+ {
+  "dir": "runs/2026-10-07-cachetools-4500e3d-r2",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-07",
+  "status": "complete",
+  "headline_eligible": true,
+  "model": "gpt-oss-120b",
+  "n": 25,
+  "first_pass_green_pct": 28.0,
+  "post_heal_green_pct": 60.0,
+  "heal_yield_pct": 44.4,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "b2b7b3b",
+  "notes": []
+ }
+]
