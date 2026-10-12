@@ -1,0 +1,52 @@
+schema: heal-yield/metadata/1
+created_utc: '2026-10-12T13:19:47.797625Z'
+status: complete
+fixture: false
+headline_eligible: true
+repo:
+  name: cachetools
+  url: https://github.com/tkem/cachetools
+  tag: v7.1.8
+  sha: 4500e3d04288738d25acbb4973eb3c3e1bf41db9
+  license: MIT
+  tier: headline
+manifest:
+  version: 1.0.1
+  declared: 2026-09-14
+model:
+  id: gpt-oss-120b
+  reported_by_generator:
+  - gpt-oss-120b
+  temperature: 0.0
+loop:
+  k: 3
+  flake_gate_executions: 5
+  generator_command: /Users/sahil/.venvs/heal-yield-run/bin/python -m heal_yield.generators.anthropic_gen
+    --model gpt-oss-120b --unmetered
+limits:
+  per_candidate_timeout_s: 120.0
+  generator_timeout_s: 600.0
+  ceiling_usd: 1.0
+modules:
+- cachetools._cachedmethod
+- cachetools._cached
+- cachetools.func
+- cachetools.keys
+baseline_rule:
+  rule: target modules' existing tests deleted before the run
+  disclaimer: NOT a claim to improve on the maintainers' suites
+  target_module_stems:
+  - _cached
+  - _cachedmethod
+  - func
+  - keys
+  removed:
+  - tests/test_cached.py
+  - tests/test_cachedmethod.py
+  - tests/test_func.py
+  - tests/test_keys.py
+  removed_count: 4
+tool:
+  name: heal-yield
+  version: 0.1.0
+  python: 3.13.13

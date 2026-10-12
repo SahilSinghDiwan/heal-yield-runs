@@ -1,0 +1,74 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_info.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1491
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________________ test_locked_caching_and_info _________________________
+
+    def test_locked_caching_and_info():
+        """Ensure that a locked cached method records hits and misses correctly."""
+        lock = threading.Lock()
+    
+        def method(self, x):
+            return x * 2
+    
+        def info(cache, hits, misses):
+            return hits, misses
+    
+        class A:
+            def __init__(self):
+                self._cache = {}
+    
+            # descriptor defined inside the class body so __set_name__ is called
+            cached = cm._locked(
+                method,
+                cache=lambda self: self._cache,
+                key=lambda self, x: x,
+                lock=lambda self: lock,
+            )
+            # attach info via a separate descriptor that includes info
+            cached_info = cm._locked(
+                method,
+                cache=lambda self: self._cache,
+                key=lambda self, x: x,
+                lock=lambda self: lock,
+            )
+            # manually set the info function on the descriptor returned by _locked
+            cached_info = cm._wrapper(
+                method,
+                cache=lambda self: self._cache,
+                key=lambda self, x: x,
+                lock=lock,
+                info=info,
+            )
+    
+        a = A()
+        # first call: miss
+>       assert a.cached_info(1) == 2
+               ^^^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:205: in __call__
+    lock = self.cache_lock
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <cachetools._cachedmethod._locked_info.<locals>.Descriptor.Wrapper object at 0x106750830>
+
+    @property
+    def cache_lock(self):
+>       return self.__lock(self._obj)
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: '_thread.lock' object is not callable
+
+src/cachetools/_cachedmethod.py:59: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_info.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info
+1 failed in 0.02s
+
+--- stderr ---

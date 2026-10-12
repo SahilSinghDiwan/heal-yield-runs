@@ -1,0 +1,18 @@
+{
+  "id": "msg_9b3bf8bba4fc13b9e0da1674",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport pytest\nfrom cachetools import keys\n\n\ndef test_hashkey_positional_only():\n    k = keys.hashkey(1, \"a\")\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == (1, \"a\")\n\n\ndef test_hashkey_with_kwargs_and_ordering():\n    k = keys.hashkey(1, b=2, a=3)\n    # kwargs are sorted by key name, so order becomes a then b\n    expected = (1,) + keys._kwmark + ((\"a\", 3), (\"b\", 2))\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == expected\n\n\ndef test_methodkey_ignores_self():\n    class Dummy:\n        def get_key(self, *args, **kwargs):\n            return keys.methodkey(self, *args, **kwargs)\n\n    d = Dummy()\n    k = d.get_key(5, x=6)\n    expected = keys.hashkey(5, x=6)\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == tuple(expected)\n\n\ndef test_typedkey_positional_only():\n    k = keys.typedkey(1, \"a\")\n    # base args followed by their types\n    expected = (1, \"a\") + (int, str)\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == expected\n\n\ndef test_typedkey_with_kwargs():\n    # Provide kwargs out of order to test sorting\n    k = keys.typedkey(1, a=2, b=\"x\")\n    # Build expected step by step\n    sorted_kwargs = ((\"a\", 2), (\"b\", \"x\"))\n    base = (1,) + keys._kwmark + sorted_kwargs\n    # Append types of kw values then types of args\n    expected = base + (int, str) + (int,)\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == expected\n    # Ensure the kwmark sentinel is correctly placed\n    assert k[1] is keys._kwmark[0]\n    # Types order: first kwargs values, then positional args\n    assert tuple(k[-3:]) == (int, str, int)\n\n\ndef test_typedmethodkey_forwards_to_typedkey():\n    class Dummy:\n        def get_key(self, *args, **kwargs):\n            return keys.typedmethodkey(self, *args, **kwargs)\n\n    d = Dummy()\n    k = d.get_key(1, a=2)\n    expected = keys.typedkey(1, a=2)\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == tuple(expected)\n\n\ndef test_hash_consistency_across_calls():\n    k1 = keys.hashkey(1, 2, a=3)\n    k2 = keys.hashkey(1, 2, a=3)\n    assert hash(k1) == hash(k2)\n    # Ensure hash is cached on the same object\n    h1 = hash(k1)\n    h2 = hash(k1)\n    assert h1 == h2\n\n\ndef test_empty_arguments():\n    k = keys.hashkey()\n    assert isinstance(k, keys._HashedTuple)\n    assert tuple(k) == ()\n    tk = keys.typedkey()\n    assert isinstance(tk, keys._HashedTuple)\n    assert tuple(tk) == ()\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 3308,
+    "output_tokens": 1638
+  }
+}

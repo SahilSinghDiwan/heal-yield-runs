@@ -1,0 +1,41 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_unlocked_wrapper_caches_without_lock.jsonl heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_without_lock
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0997
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_unlocked_wrapper_caches_without_lock ___________________
+
+    def test_unlocked_wrapper_caches_without_lock():
+        func = make_counter_func()
+        cache = {}
+        wrapper = _cached._wrapper(func, cache=cache, key=identity_key)
+    
+        # First call stores the result
+        assert wrapper(2) == "result-2"
+        assert func.calls["count"] == 1
+        assert cache[2] == "result-2"
+    
+        # Second call hits the cache, function not called again
+        assert wrapper(2) == "result-2"
+        assert func.calls["count"] == 1
+    
+        # cache_* attributes
+        assert wrapper.cache is cache
+        assert wrapper.cache_key is identity_key
+>       assert isinstance(wrapper.cache_lock, threading.Condition)  # lock is a Condition when none supplied
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert False
+E        +  where False = isinstance(None, <class 'threading.Condition'>)
+E        +    where None = <function make_counter_func.<locals>.func at 0x101cc8860>.cache_lock
+E        +    and   <class 'threading.Condition'> = threading.Condition
+
+heal_yield_generated/test_cachetools__cached.py:69: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_unlocked_wrapper_caches_without_lock.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_unlocked_wrapper_caches_without_lock
+1 failed in 0.02s
+
+--- stderr ---

@@ -1,0 +1,52 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1003
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_fifo_cache_eviction ___________________________
+
+    def test_fifo_cache_eviction():
+        f = make_counter()
+        # maxsize 2 FIFO
+        cached_f = func.fifo_cache(maxsize=2)(f)
+    
+        # Fill cache with two distinct keys
+        assert cached_f(1) == 2
+        assert cached_f(2) == 4
+        # No extra calls yet
+        assert f.calls["cnt"] == 2
+    
+        # Access first key again – should be cached (no new call)
+        assert cached_f(1) == 2
+        assert f.calls["cnt"] == 2
+    
+        # Insert third key, causing eviction of the *first* inserted key (1)
+        assert cached_f(3) == 6
+        assert f.calls["cnt"] == 3
+    
+        # Now key 1 should be recomputed (evicted)
+        assert cached_f(1) == 2
+        assert f.calls["cnt"] == 4
+    
+        # The cache should contain keys 3 and 1 (most recent two)
+>       assert set(cached_f.cache) == {3, 1}
+E       assert {(1,), (3,)} == {1, 3}
+E         
+E         Extra items in the left set:
+E         (1,)
+E         (3,)
+E         Extra items in the right set:
+E         1
+E         3
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:45: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---

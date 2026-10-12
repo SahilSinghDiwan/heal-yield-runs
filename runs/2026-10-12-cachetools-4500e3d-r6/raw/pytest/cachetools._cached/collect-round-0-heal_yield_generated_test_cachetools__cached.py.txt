@@ -1,0 +1,17 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest --collect-only -q --no-header -p no:cacheprovider heal_yield_generated/test_cachetools__cached.py
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0970
+--- stdout ---
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_uncached_wrapper_calls_function_and_has_no_info
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_uncached_info_counts_misses_and_clears
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_caches_and_counts_hits_and_misses
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_locked_info_handles_value_error_on_setitem
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_blocks_and_caches
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_condition_info_counts_and_clears
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure
+
+7 tests collected in 0.01s
+
+--- stderr ---

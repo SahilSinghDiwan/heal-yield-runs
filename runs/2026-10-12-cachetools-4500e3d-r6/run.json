@@ -1,0 +1,2649 @@
+{
+  "baseline_rule": {
+    "disclaimer": "NOT a claim to improve on the maintainers' suites",
+    "removed": [
+      "tests/test_cached.py",
+      "tests/test_cachedmethod.py",
+      "tests/test_func.py",
+      "tests/test_keys.py"
+    ],
+    "removed_count": 4,
+    "rule": "target modules' existing tests deleted before the run",
+    "target_module_stems": [
+      "_cached",
+      "_cachedmethod",
+      "func",
+      "keys"
+    ]
+  },
+  "candidates": [
+    {
+      "built_round_0": true,
+      "disposition": "weakened-rejected",
+      "failure_signatures": [
+        "d8fb1aa04743b08d"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": "candidate was deleted by the repair",
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_wrapper_caches_and_reports_info",
+      "lineno": 9,
+      "module": "cachetools._cachedmethod",
+      "name": "test_unlocked_wrapper_caches_and_reports_info",
+      "qualname": "test_unlocked_wrapper_caches_and_reports_info",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_wrapper_caches_and_reports_info.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": "candidate was deleted by the repair",
+            "rejected": true
+          },
+          "phase": "repair",
+          "round": 1
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "weakened-rejected",
+      "failure_signatures": [
+        "d8fb1aa04743b08d"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": "candidate was deleted by the repair",
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_wrapper_uses_lock_and_counts_hits",
+      "lineno": 42,
+      "module": "cachetools._cachedmethod",
+      "name": "test_locked_wrapper_uses_lock_and_counts_hits",
+      "qualname": "test_locked_wrapper_uses_lock_and_counts_hits",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_wrapper_uses_lock_and_counts_hits.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": "candidate was deleted by the repair",
+            "rejected": true
+          },
+          "phase": "repair",
+          "round": 1
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "d8fb1aa04743b08d",
+        "e58a1e1f92e56f69",
+        "ee1664c14c37eb81"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": null,
+      "healed_at_round": 3,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_condition_and_lock_wrapper_behaves_correctly",
+      "lineno": 77,
+      "module": "cachetools._cachedmethod",
+      "name": "test_condition_and_lock_wrapper_behaves_correctly",
+      "qualname": "test_condition_and_lock_wrapper_behaves_correctly",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_and_lock_wrapper_behaves_correctly.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_and_lock_wrapper_behaves_correctly.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_and_lock_wrapper_behaves_correctly.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_and_lock_wrapper_behaves_correctly.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_and_lock_wrapper_behaves_correctly.xml",
+          "net_new_lines": 4,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "no-coverage-increase",
+      "failure_signatures": [
+        "97d0ed72d6948900",
+        "e58a1e1f92e56f69",
+        "682f94fd513ee064"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": null,
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecated_warning",
+      "lineno": 110,
+      "module": "cachetools._cachedmethod",
+      "name": "test_classmethod_deprecated_warning",
+      "qualname": "test_classmethod_deprecated_warning",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.xml",
+          "net_new_lines": 0,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "weakened-rejected",
+      "failure_signatures": [
+        "db1892a6dd5384ac",
+        "7d72f6a6e4ea78b3",
+        "dcb740d451190790"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": "candidate was deleted by the repair",
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error",
+      "lineno": 139,
+      "module": "cachetools._cachedmethod",
+      "name": "test_descriptor_without_dict_raises_type_error",
+      "qualname": "test_descriptor_without_dict_raises_type_error",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-3/generator.txt",
+          "guard": {
+            "reason": "candidate was deleted by the repair",
+            "rejected": true
+          },
+          "phase": "repair",
+          "round": 3
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "1de7fbb4309fc967",
+        "ef9a95a5d4502f13"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cachedmethod.py",
+      "guard_reason": null,
+      "healed_at_round": 3,
+      "id": "heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_set_name_conflict_raises_type_error",
+      "lineno": 159,
+      "module": "cachetools._cachedmethod",
+      "name": "test_descriptor_set_name_conflict_raises_type_error",
+      "qualname": "test_descriptor_set_name_conflict_raises_type_error",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/collect-round-0-heal_yield_generated_test_cachetools__cachedmethod.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cachedmethod/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.xml",
+          "net_new_lines": 2,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "788a2f65b2ed09b8f9f2e504dab97194a41cf20cdc4b64823de7a6f16753572b"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_uncached_wrapper_calls_function_and_has_no_info",
+      "lineno": 18,
+      "module": "cachetools._cached",
+      "name": "test_uncached_wrapper_calls_function_and_has_no_info",
+      "qualname": "test_uncached_wrapper_calls_function_and_has_no_info",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_uncached_wrapper_calls_function_and_has_no_info.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_uncached_wrapper_calls_function_and_has_no_info.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_uncached_wrapper_calls_function_and_has_no_info.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_uncached_wrapper_calls_function_and_has_no_info.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_uncached_wrapper_calls_function_and_has_no_info.xml",
+          "net_new_lines": 7,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_uncached_info_counts_misses_and_clears",
+      "lineno": 41,
+      "module": "cachetools._cached",
+      "name": "test_uncached_info_counts_misses_and_clears",
+      "qualname": "test_uncached_info_counts_misses_and_clears",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_uncached_info_counts_misses_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_uncached_info_counts_misses_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_uncached_info_counts_misses_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_uncached_info_counts_misses_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_uncached_info_counts_misses_and_clears.xml",
+          "net_new_lines": 10,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_caches_and_counts_hits_and_misses",
+      "lineno": 65,
+      "module": "cachetools._cached",
+      "name": "test_locked_wrapper_caches_and_counts_hits_and_misses",
+      "qualname": "test_locked_wrapper_caches_and_counts_hits_and_misses",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_caches_and_counts_hits_and_misses.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_caches_and_counts_hits_and_misses.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_caches_and_counts_hits_and_misses.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_caches_and_counts_hits_and_misses.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_locked_wrapper_caches_and_counts_hits_and_misses.xml",
+          "net_new_lines": 5,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "weakened-rejected",
+      "failure_signatures": [
+        "7839fa295f519001"
+      ],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": "candidate was deleted by the repair",
+      "healed_at_round": 1,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_locked_info_handles_value_error_on_setitem",
+      "lineno": 99,
+      "module": "cachetools._cached",
+      "name": "test_locked_info_handles_value_error_on_setitem",
+      "qualname": "test_locked_info_handles_value_error_on_setitem",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_locked_info_handles_value_error_on_setitem.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_locked_info_handles_value_error_on_setitem.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": "candidate was deleted by the repair",
+            "rejected": true
+          },
+          "phase": "repair",
+          "round": 2
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_blocks_and_caches",
+      "lineno": 128,
+      "module": "cachetools._cached",
+      "name": "test_condition_wrapper_blocks_and_caches",
+      "qualname": "test_condition_wrapper_blocks_and_caches",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.xml",
+          "net_new_lines": 26,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_condition_info_counts_and_clears",
+      "lineno": 178,
+      "module": "cachetools._cached",
+      "name": "test_condition_info_counts_and_clears",
+      "qualname": "test_condition_info_counts_and_clears",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_condition_info_counts_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_condition_info_counts_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_condition_info_counts_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_info_counts_and_clears.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_condition_info_counts_and_clears.xml",
+          "net_new_lines": 4,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools__cached.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure",
+      "lineno": 210,
+      "module": "cachetools._cached",
+      "name": "test_wrapper_attribute_exposure",
+      "qualname": "test_wrapper_attribute_exposure",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools._cached/collect-round-0-heal_yield_generated_test_cachetools__cached.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-0-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools._cached/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools__cached.py__test_wrapper_attribute_exposure.xml",
+          "net_new_lines": 28,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "9654236608f92429eead8e666fdb15b324debf643f5859b55c30f232bf94c88c"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "5b8105af847e2074"
+      ],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 1,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction",
+      "lineno": 21,
+      "module": "cachetools.func",
+      "name": "test_fifo_cache_eviction",
+      "qualname": "test_fifo_cache_eviction",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "38ed7a41bb044159",
+        "47e1368c2db96acc",
+        "f3ff30ee889a86e7"
+      ],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 3,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction",
+      "lineno": 48,
+      "module": "cachetools.func",
+      "name": "test_lru_cache_eviction",
+      "qualname": "test_lru_cache_eviction",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "a32ffd259ef6369d"
+      ],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 1,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction",
+      "lineno": 73,
+      "module": "cachetools.func",
+      "name": "test_lfu_cache_eviction",
+      "qualname": "test_lfu_cache_eviction",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "cd38bdeec84d5906"
+      ],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 1,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement",
+      "lineno": 98,
+      "module": "cachetools.func",
+      "name": "test_rr_cache_deterministic_replacement",
+      "qualname": "test_rr_cache_deterministic_replacement",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration",
+      "lineno": 124,
+      "module": "cachetools.func",
+      "name": "test_ttl_cache_expiration",
+      "qualname": "test_ttl_cache_expiration",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float",
+      "lineno": 164,
+      "module": "cachetools.func",
+      "name": "test_typed_cache_separates_int_and_float",
+      "qualname": "test_typed_cache_separates_int_and_float",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.xml",
+          "net_new_lines": 25,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_func.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_parameters",
+      "lineno": 184,
+      "module": "cachetools.func",
+      "name": "test_unbounded_cache_parameters",
+      "qualname": "test_unbounded_cache_parameters",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.func/collect-round-0-heal_yield_generated_test_cachetools_func.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-1-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.func/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.xml",
+          "net_new_lines": 24,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "227e63f0ca86acfb2a0968450875be565283816f87724a407965eb789437474f"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "no-coverage-increase",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs",
+      "lineno": 7,
+      "module": "cachetools.keys",
+      "name": "test_hashkey_without_kwargs",
+      "qualname": "test_hashkey_without_kwargs",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_hashkey_without_kwargs.xml",
+          "net_new_lines": 0,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "b7b585449a9d7b5d"
+      ],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": 2,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs",
+      "lineno": 17,
+      "module": "cachetools.keys",
+      "name": "test_hashkey_with_kwargs",
+      "qualname": "test_hashkey_with_kwargs",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs.xml",
+          "net_new_lines": 1,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "still-failing",
+      "failure_signatures": [
+        "9d6663b8f33ea299"
+      ],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_methodkey_forwards_to_hashkey",
+      "lineno": 30,
+      "module": "cachetools.keys",
+      "name": "test_methodkey_forwards_to_hashkey",
+      "qualname": "test_methodkey_forwards_to_hashkey",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 3
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "no-coverage-increase",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": null,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_typedkey_without_kwargs",
+      "lineno": 43,
+      "module": "cachetools.keys",
+      "name": "test_typedkey_without_kwargs",
+      "qualname": "test_typedkey_without_kwargs",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_typedkey_without_kwargs.xml",
+          "net_new_lines": 0,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "062e63050675165b",
+        "9461d4d0e13bb1b6"
+      ],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": 3,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs",
+      "lineno": 54,
+      "module": "cachetools.keys",
+      "name": "test_typedkey_with_kwargs",
+      "qualname": "test_typedkey_with_kwargs",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.xml",
+          "net_new_lines": 3,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [
+        "20432748c32071e9"
+      ],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": 3,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_forwards_to_typedkey",
+      "lineno": 67,
+      "module": "cachetools.keys",
+      "name": "test_typedmethodkey_forwards_to_typedkey",
+      "qualname": "test_typedmethodkey_forwards_to_typedkey",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.txt",
+          "outcome": "failed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.xml",
+          "net_new_lines": 3,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    },
+    {
+      "built_round_0": true,
+      "disposition": "passed",
+      "failure_signatures": [],
+      "file": "heal_yield_generated/test_cachetools_keys.py",
+      "guard_reason": null,
+      "healed_at_round": 0,
+      "id": "heal_yield_generated/test_cachetools_keys.py::test_hash_caching_behavior",
+      "lineno": 79,
+      "module": "cachetools.keys",
+      "name": "test_hash_caching_behavior",
+      "qualname": "test_hash_caching_behavior",
+      "rounds": [
+        {
+          "artifact": "raw/pytest/cachetools.keys/collect-round-0-heal_yield_generated_test_cachetools_keys.py.txt",
+          "ok": true,
+          "phase": "collect",
+          "round": 0
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-0-heal_yield_generated_test_cachetools_keys.py__test_hash_caching_behavior.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 0
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-1/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 1
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_hash_caching_behavior.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 1
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-2/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 2
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_hash_caching_behavior.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 2
+        },
+        {
+          "artifact": "raw/model/cachetools.keys/round-3/generator.txt",
+          "guard": {
+            "reason": null,
+            "rejected": false
+          },
+          "phase": "repair",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_hash_caching_behavior.txt",
+          "outcome": "passed",
+          "phase": "run",
+          "round": 3
+        },
+        {
+          "artifact": "raw/pytest/gate/exec-1.txt",
+          "outcomes": [
+            "passed",
+            "passed",
+            "passed",
+            "passed",
+            "passed"
+          ],
+          "phase": "flake-gate"
+        },
+        {
+          "artifact": "raw/coverage/per-candidate-heal_yield_generated_test_cachetools_keys.py__test_hash_caching_behavior.xml",
+          "net_new_lines": 1,
+          "phase": "coverage"
+        }
+      ],
+      "source_sha256": "4ad8398eb731dccaefe121e6dcbe23628d0f25db9847f3a48bb3234e2268f885"
+    }
+  ],
+  "config": {
+    "ceiling_usd": 1.0,
+    "flake_gate_executions": 5,
+    "generated_dir": "heal_yield_generated",
+    "generator_command": "/Users/sahil/.venvs/heal-yield-run/bin/python -m heal_yield.generators.anthropic_gen --model gpt-oss-120b --unmetered",
+    "generator_timeout_s": 600.0,
+    "k": 3,
+    "model": "gpt-oss-120b",
+    "models_reported_by_generator": [
+      "gpt-oss-120b"
+    ],
+    "module_files": {
+      "cachetools._cached": "src/cachetools/_cached.py",
+      "cachetools._cachedmethod": "src/cachetools/_cachedmethod.py",
+      "cachetools.func": "src/cachetools/func.py",
+      "cachetools.keys": "src/cachetools/keys.py"
+    },
+    "modules": [
+      "cachetools._cachedmethod",
+      "cachetools._cached",
+      "cachetools.func",
+      "cachetools.keys"
+    ],
+    "package": "cachetools",
+    "per_candidate_coverage": true,
+    "per_candidate_timeout_s": 120.0,
+    "repetition": 6,
+    "temperature": 0.0
+  },
+  "cost": {
+    "by_round": {
+      "0": {
+        "calls": 4,
+        "completion_tokens": 9590,
+        "prompt_tokens": 6577,
+        "usd": null
+      },
+      "1": {
+        "calls": 4,
+        "completion_tokens": 11649,
+        "prompt_tokens": 17109,
+        "usd": null
+      },
+      "2": {
+        "calls": 4,
+        "completion_tokens": 10052,
+        "prompt_tokens": 15618,
+        "usd": null
+      },
+      "3": {
+        "calls": 4,
+        "completion_tokens": 10894,
+        "prompt_tokens": 15957,
+        "usd": null
+      }
+    },
+    "ceiling_usd": 1.0,
+    "records": [
+      {
+        "completion_tokens": 2359,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cachedmethod",
+        "prompt_tokens": 3191,
+        "round": 0,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 3092,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cached",
+        "prompt_tokens": 1698,
+        "round": 0,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2236,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.func",
+        "prompt_tokens": 1024,
+        "round": 0,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 1903,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.keys",
+        "prompt_tokens": 664,
+        "round": 0,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2729,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cached",
+        "prompt_tokens": 4110,
+        "round": 1,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2782,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cachedmethod",
+        "prompt_tokens": 6024,
+        "round": 1,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2256,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.func",
+        "prompt_tokens": 4285,
+        "round": 1,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 3882,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.keys",
+        "prompt_tokens": 2690,
+        "round": 1,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 4019,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cached",
+        "prompt_tokens": 3826,
+        "round": 2,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2096,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cachedmethod",
+        "prompt_tokens": 5198,
+        "round": 2,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2099,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.func",
+        "prompt_tokens": 3394,
+        "round": 2,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 1838,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.keys",
+        "prompt_tokens": 3200,
+        "round": 2,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 3541,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cached",
+        "prompt_tokens": 3530,
+        "round": 3,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 3443,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools._cachedmethod",
+        "prompt_tokens": 5893,
+        "round": 3,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 1615,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.func",
+        "prompt_tokens": 3304,
+        "round": 3,
+        "usd": 0.0
+      },
+      {
+        "completion_tokens": 2295,
+        "metered": false,
+        "model": "gpt-oss-120b",
+        "module": "cachetools.keys",
+        "prompt_tokens": 3230,
+        "round": 3,
+        "usd": 0.0
+      }
+    ],
+    "total_completion_tokens": 42185,
+    "total_prompt_tokens": 55261,
+    "total_usd": 0.0,
+    "tripped": false
+  },
+  "coverage": {
+    "baseline": {
+      "branch_pct": 35.13513513513514,
+      "branches_covered": 26,
+      "branches_total": 74,
+      "line_and_branch_pct": 52.848101265822784,
+      "line_pct": 55.19713261648746,
+      "lines_covered": 308,
+      "lines_total": 558
+    },
+    "final": {
+      "branch_pct": 70.27027027027027,
+      "branches_covered": 52,
+      "branches_total": 74,
+      "line_and_branch_pct": 74.84177215189874,
+      "line_pct": 75.44802867383513,
+      "lines_covered": 421,
+      "lines_total": 558
+    },
+    "net_new_covered_lines": 113
+  },
+  "created_utc": "2026-10-12T13:19:47.797625Z",
+  "fixture": false,
+  "manifest_version": "1.0.1",
+  "metrics": {
+    "fixture": false,
+    "headline_eligible": true,
+    "metric_10_assertion_weakening_guard": {
+      "note": "reported even when zero",
+      "rejected": 4
+    },
+    "metric_1_generated_candidates": 27,
+    "metric_2_first_pass_build_rate": {
+      "denominator": 27,
+      "numerator": 27,
+      "pct": 100.0
+    },
+    "metric_3_first_pass_green_rate": {
+      "denominator": 27,
+      "numerator": 10,
+      "pct": 37.03703703703704
+    },
+    "metric_4_post_heal_green_rate": {
+      "denominator": 27,
+      "k": 3,
+      "numerator": 19,
+      "pct": 70.37037037037037,
+      "per_round_attribution": {
+        "0": 10,
+        "1": 3,
+        "2": 1,
+        "3": 5
+      }
+    },
+    "metric_5_heal_yield": {
+      "denominator": 17,
+      "numerator": 9,
+      "pct": 52.94117647058823,
+      "suppressed_because": null
+    },
+    "metric_6_coverage": {
+      "baseline": {
+        "branch_pct": 35.13513513513514,
+        "branches_covered": 26,
+        "branches_total": 74,
+        "line_and_branch_pct": 52.848101265822784,
+        "line_pct": 55.19713261648746,
+        "lines_covered": 308,
+        "lines_total": 558
+      },
+      "delta_branch_pct": 35.13513513513514,
+      "delta_line_and_branch_pct": 21.993670886075954,
+      "delta_line_pct": 20.250896057347667,
+      "final": {
+        "branch_pct": 70.27027027027027,
+        "branches_covered": 52,
+        "branches_total": 74,
+        "line_and_branch_pct": 74.84177215189874,
+        "line_pct": 75.44802867383513,
+        "lines_covered": 421,
+        "lines_total": 558
+      },
+      "net_new_covered_lines": 113
+    },
+    "metric_7_mutation_score": "deferred to increment 2; see METRICS.md metric 7",
+    "metric_8_cost": {
+      "by_round": {
+        "0": {
+          "calls": 4,
+          "completion_tokens": 9590,
+          "prompt_tokens": 6577,
+          "usd": null
+        },
+        "1": {
+          "calls": 4,
+          "completion_tokens": 11649,
+          "prompt_tokens": 17109,
+          "usd": null
+        },
+        "2": {
+          "calls": 4,
+          "completion_tokens": 10052,
+          "prompt_tokens": 15618,
+          "usd": null
+        },
+        "3": {
+          "calls": 4,
+          "completion_tokens": 10894,
+          "prompt_tokens": 15957,
+          "usd": null
+        }
+      },
+      "ceiling_tripped": false,
+      "ceiling_usd": 1.0,
+      "completion_tokens": 42185,
+      "cost_basis": "unmetered",
+      "prompt_tokens": 55261,
+      "total_usd": null,
+      "usd_per_net_new_covered_line": null,
+      "usd_per_surviving_test": null
+    },
+    "metric_9_dispositions": {
+      "invariant_detail": "",
+      "invariant_line": "dispositions sum to N = 27 OK",
+      "invariant_ok": true,
+      "ledger": {
+        "build-failure": 0,
+        "collect-error": 0,
+        "no-coverage-increase": 3,
+        "no-output": 0,
+        "no-progress-abort": 0,
+        "passed": 19,
+        "still-failing": 1,
+        "still-flaky": 0,
+        "timeout": 0,
+        "weakened-rejected": 4
+      },
+      "never_healed": {
+        "no-progress-abort": 0,
+        "still-failing": 1,
+        "still-flaky": 0,
+        "weakened-rejected": 4
+      },
+      "never_healed_total": 5
+    },
+    "n": 27,
+    "status": "complete"
+  },
+  "repo": {
+    "dir": "cachetools",
+    "package": "cachetools",
+    "sha": "4500e3d04288738d25acbb4973eb3c3e1bf41db9"
+  },
+  "schema": "heal-yield/run/1",
+  "status": "complete",
+  "truncation_reason": null
+}

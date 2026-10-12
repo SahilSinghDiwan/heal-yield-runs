@@ -1,0 +1,84 @@
+### heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction_and_order
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction_and_order.jsonl heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction_and_order
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0927
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction_and_order.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.jsonl heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0895
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_ttl_cache_with_custom_timer
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_with_custom_timer.jsonl heal_yield_generated/test_cachetools_func.py::test_ttl_cache_with_custom_timer
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0908
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_with_custom_timer.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0894
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_decorator_without_parentheses.jsonl heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0869
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_decorator_without_parentheses.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_cache_parameters_reflect_configuration
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_cache_parameters_reflect_configuration.jsonl heal_yield_generated/test_cachetools_func.py::test_cache_parameters_reflect_configuration
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0884
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_cache_parameters_reflect_configuration.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+

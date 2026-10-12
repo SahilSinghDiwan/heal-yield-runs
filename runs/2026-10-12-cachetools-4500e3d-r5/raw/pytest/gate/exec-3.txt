@@ -1,0 +1,48 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/gate/exec-3.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_info_caching_and_clear heal_yield_generated/test_cachetools__cached.py::test_uncached_wrapper_behaviour heal_yield_generated/test_cachetools__cached.py::test_locked_wrapper_uses_threading_lock heal_yield_generated/test_cachetools__cached.py::test_unlocked_info_counts_hits_and_misses heal_yield_generated/test_cachetools__cached.py::test_locked_info_counts_with_threading_lock heal_yield_generated/test_cachetools__cached.py::test_condition_info_counts_and_pending_behavior heal_yield_generated/test_cachetools__cached.py::test_uncached_info_counts_misses_only heal_yield_generated/test_cachetools__cached.py::test_bad_cache_does_not_propagate_value_error heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction_and_order heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float heal_yield_generated/test_cachetools_func.py::test_ttl_cache_with_custom_timer heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses heal_yield_generated/test_cachetools_func.py::test_cache_parameters_reflect_configuration heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_and_ordering heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self heal_yield_generated/test_cachetools_keys.py::test_typedkey_positional_only heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_delegates_to_typedkey heal_yield_generated/test_cachetools_keys.py::test_hashedtuple_addition_and_raddition heal_yield_generated/test_cachetools_keys.py::test_hashedtuple_getstate_returns_empty_dict
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1229
+--- stdout ---
+F.....................                                                   [100%]
+=================================== FAILURES ===================================
+_____________________ test_unlocked_info_caching_and_clear _____________________
+
+    def test_unlocked_info_caching_and_clear():
+        """Basic caching behavior for the unlocked info variant."""
+        calls = []
+    
+        def compute(self, x):
+            calls.append(x)
+            return x * 2
+    
+        cache = {}
+        key = lambda self, x: x
+        info = lambda c, h, m: (len(c), h, m)
+    
+        descriptor = _cachedmethod._wrapper(compute, lambda self: cache, key, info=info)
+    
+        class A:
+            method = descriptor
+    
+        a = A()
+        # First call computes and caches
+        assert a.method(3) == 6
+        assert calls == [3]
+        # Second call hits cache
+        assert a.method(3) == 6
+        assert calls == [3]  # no new call
+        # Cache info reflects one hit and one miss
+>       assert a.method.cache_info() == (1, 1, 0)
+E       assert (1, 1, 1) == (1, 1, 0)
+E         
+E         At index 2 diff: 1 != 0
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cachedmethod.py:34: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/gate/exec-3.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_info_caching_and_clear
+1 failed, 21 passed in 0.04s
+
+--- stderr ---

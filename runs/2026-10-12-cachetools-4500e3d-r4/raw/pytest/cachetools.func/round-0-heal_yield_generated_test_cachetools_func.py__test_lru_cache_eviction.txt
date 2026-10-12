@@ -1,0 +1,48 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0975
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_lru_cache_eviction ____________________________
+
+    def test_lru_cache_eviction():
+        """LRU cache should evict the least‑recently used entry."""
+        calls = {"cnt": 0}
+    
+        @cachefunc.lru_cache(maxsize=2)
+        def f(x):
+            calls["cnt"] += 1
+            return calls["cnt"]
+    
+        # Populate cache
+        assert f(1) == 1
+        assert f(2) == 2
+        assert calls["cnt"] == 2
+    
+        # Access key 1 to make it most‑recently used
+        assert f(1) == 1
+        assert calls["cnt"] == 2
+    
+        # Adding a new key should evict key 2 (least recently used)
+        assert f(3) == 3
+        assert calls["cnt"] == 3
+    
+        # Key 2 must be recomputed
+        assert f(2) == 4
+        assert calls["cnt"] == 4
+    
+        # Key 1 is still cached
+>       assert f(1) == 1
+E       assert 5 == 1
+E        +  where 5 = <function test_lru_cache_eviction.<locals>.f at 0x1040f45e0>(1)
+
+heal_yield_generated/test_cachetools_func.py:67: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---

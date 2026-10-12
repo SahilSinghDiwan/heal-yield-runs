@@ -1,0 +1,38 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecated_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0930
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_classmethod_deprecated_warning ______________________
+
+    def test_classmethod_deprecated_warning():
+        """Using @cachedmethod on a classmethod should emit a DeprecationWarning."""
+    
+        def compute(cls, x):
+            return x - 1
+    
+>       class Qux:
+
+heal_yield_generated/test_cachetools__cachedmethod.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    class Qux:
+        _cache = {}
+        compute = _cachedmethod._wrapper(
+>           compute,
+            ^^^^^^^
+            cache=lambda cls: cls._cache,
+            key=lambda cls, x: x,
+        )  # no info -> deprecated classmethod handling
+E       NameError: name 'compute' is not defined
+
+heal_yield_generated/test_cachetools__cachedmethod.py:119: NameError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecated_warning
+1 failed in 0.01s
+
+--- stderr ---

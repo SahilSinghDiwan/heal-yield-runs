@@ -1,0 +1,204 @@
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_behaviour
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caching_behaviour.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_behaviour
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1385
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_unlocked_caching_behaviour ________________________
+
+    def test_unlocked_caching_behaviour():
+        """Basic caching without lock/condition/info."""
+        cache = {}
+        key = lambda self, x: x
+    
+        class C:
+            def compute(self, x):
+                return x * 2
+    
+        # apply the wrapper after class creation
+        C.compute = _wrapper(C.compute, cache=lambda obj: cache, key=key)
+        # ensure descriptor knows its attribute name
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:21: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caching_behaviour.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_behaviour
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_thread_safety
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_thread_safety.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_thread_safety
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0887
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_locked_caching_and_thread_safety _____________________
+
+    def test_locked_caching_and_thread_safety():
+        """Caching with a lock should be thread‑safe."""
+        lock = threading.Lock()
+        cache = {}
+        key = lambda self, x: x
+    
+        class C:
+            def compute(self, x):
+                return x + 1
+    
+        C.compute = _wrapper(C.compute, cache=lambda obj: cache, key=key, lock=lambda obj: lock)
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:42: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_thread_safety.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_thread_safety
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_info_caching_and_cache_info.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0888
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_info_caching_and_cache_info _______________________
+
+    def test_info_caching_and_cache_info():
+        """Caching with an info function should expose hit/miss statistics."""
+        cache = {}
+        key = lambda self, x: x
+        info = lambda c, hits, misses: (len(c), hits, misses)
+    
+        class C:
+            def compute(self, x):
+                return x + 2
+    
+        C.compute = _wrapper(
+            C.compute,
+            cache=lambda obj: cache,
+            key=key,
+            info=info,
+        )
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:78: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_info_caching_and_cache_info.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_deprecated_classmethod_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0891
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_deprecated_classmethod_warning ______________________
+
+    def test_deprecated_classmethod_warning():
+        """Using @cachedmethod on a classmethod should emit DeprecationWarnings."""
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+    
+        class C:
+            _cache = {}
+            _lock = lock
+            _cond = cond
+            calls = 0
+    
+            @classmethod
+            def compute(cls, x):
+                cls.calls += 1
+                return x * 2
+    
+        cache_fn = lambda obj: obj._cache
+        key_fn = lambda obj, x: x
+        lock_fn = lambda obj: obj._lock
+        cond_fn = lambda obj: obj._cond
+    
+        # Apply the wrapper after class creation (deprecated path)
+        C.compute = _wrapper(
+            C.compute,
+            cache=cache_fn,
+            key=key_fn,
+            lock=lock_fn,
+            cond=cond_fn,
+        )
+        # Manually set the descriptor name so that __set_name__ logic runs
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:125: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_deprecated_classmethod_warning.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+1 failed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0940
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_descriptor_on_slots_raises_type_error __________________
+
+    def test_descriptor_on_slots_raises_type_error():
+        """A descriptor applied to a class with __slots__ (no __dict__) should raise TypeError."""
+        class C:
+            __slots__ = ("_cache",)  # allow storage of the cache but no __dict__
+    
+            def __init__(self):
+                self._cache = {}
+    
+            def compute(self, x):
+                return x
+    
+        cache_fn = lambda obj: obj._cache
+        key_fn = lambda obj, x: x
+    
+        C.compute = _wrapper(C.compute, cache=cache_fn, key=key_fn)
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:154: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+1 failed in 0.01s
+
+--- stderr ---
+
+

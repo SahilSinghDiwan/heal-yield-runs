@@ -1,0 +1,39 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_uncached_with_info_counts_misses.jsonl heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0905
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_uncached_with_info_counts_misses _____________________
+
+    def test_uncached_with_info_counts_misses():
+        """When caching is disabled but ``info`` is supplied, only misses are counted."""
+        misses = []
+    
+        def info(h, m):
+            misses.append(m)
+            return (h, m)
+    
+        def func(x):
+            return x - 1
+    
+        wrapped = cached_module._wrapper(func, cache=None, key=lambda x: x, info=info)
+    
+        assert wrapped(5) == 4
+        assert wrapped(5) == 4
+        # Two calls → two misses
+>       assert misses == [1, 2]
+E       assert [] == [1, 2]
+E         
+E         Right contains 2 more items, first extra item: 1
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cached.py:124: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_uncached_with_info_counts_misses.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses
+1 failed in 0.02s
+
+--- stderr ---

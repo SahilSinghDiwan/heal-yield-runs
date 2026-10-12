@@ -1,0 +1,17 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest --collect-only -q --no-header -p no:cacheprovider heal_yield_generated/test_cachetools_keys.py
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0899
+--- stdout ---
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_hashkey_without_kwargs
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_methodkey_forwards_to_hashkey
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_typedkey_without_kwargs
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_forwards_to_typedkey
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_keys.py::test_hash_caching_behavior
+
+7 tests collected in 0.01s
+
+--- stderr ---

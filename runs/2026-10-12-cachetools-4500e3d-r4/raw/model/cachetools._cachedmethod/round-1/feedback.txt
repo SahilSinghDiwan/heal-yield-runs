@@ -1,0 +1,295 @@
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_and_cache_clear
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caching_and_cache_clear.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_and_cache_clear
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0938
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_unlocked_caching_and_cache_clear.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_info.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1366
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________________ test_locked_caching_and_info _________________________
+
+    def test_locked_caching_and_info():
+        """Locked version with hit/miss info."""
+        hits_misses = {"hits": 0, "misses": 0}
+        lock = threading.Lock()
+    
+        def method(self, x):
+            return x + 5
+    
+        def info(cache, hits, misses):
+            hits_misses["hits"] = hits
+            hits_misses["misses"] = misses
+            return (hits, misses)
+    
+        class B:
+            def __init__(self):
+                self._cache = {}
+    
+        B.bar = cm._locked_info(
+            method,
+            cache=lambda self: self._cache,
+            key=lambda self, x: x,
+            lock=lambda self: lock,
+            info=info,
+        )
+    
+        b = B()
+        # first call: miss
+>       assert b.bar(1) == 6
+               ^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <cachetools._cachedmethod._locked_info.<locals>.Descriptor object at 0x101dc6ba0>
+obj = <heal_yield_generated.test_cachetools__cachedmethod.test_locked_caching_and_info.<locals>.B object at 0x102170590>
+objtype = <class 'heal_yield_generated.test_cachetools__cachedmethod.test_locked_caching_and_info.<locals>.B'>
+
+    def __get__(self, obj, objtype=None):
+        wrapper = self.Wrapper(obj)  # type: ignore
+        if obj is None:
+            # Return the wrapper itself without modification when accessed
+            # through the class to support class-level introspection, such
+            # as for mocking with autospec=True in unittest.mock.
+            pass
+        elif self.__attrname is not None:
+            # replace descriptor instance with wrapper in instance dict
+            try:
+                # In case of a race condition where another thread already replaced
+                # the descriptor, prefer the initial wrapper.
+                wrapper = obj.__dict__.setdefault(self.__attrname, wrapper)
+            except AttributeError:
+                # not all objects have __dict__ (e.g. class defines slots)
+                msg = (
+                    f"No '__dict__' attribute on {type(obj).__name__!r} "
+                    f"instance to cache {self.__attrname!r} property."
+                )
+                if self.__deprecated:
+                    _warn_instance_dict(msg, 3)
+                else:
+                    raise TypeError(msg) from None
+            except TypeError:
+                msg = (
+                    f"The '__dict__' attribute on {type(obj).__name__!r} "
+                    f"instance does not support item assignment for "
+                    f"caching {self.__attrname!r} property."
+                )
+                if self.__deprecated:
+                    _warn_instance_dict(msg, 3)
+                else:
+                    raise TypeError(msg) from None
+        elif self.__deprecated:
+            pass  # deprecated @classmethod, warning already raised elsewhere
+        else:
+            msg = "Cannot use @cachedmethod instance without calling __set_name__ on it"
+>           raise TypeError(msg) from None
+E           TypeError: Cannot use @cachedmethod instance without calling __set_name__ on it
+
+src/cachetools/_cachedmethod.py:119: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_locked_caching_and_info.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_condition_caching
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_caching.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_condition_caching
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1024
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_condition_caching.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_deprecated_classmethod_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1005
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_deprecated_classmethod_warning ______________________
+
+    def test_deprecated_classmethod_warning():
+        """Calling a cached method via the class should emit a DeprecationWarning."""
+        lock = threading.Lock()
+    
+        def method(self, x):
+            return x - 1
+    
+        class D:
+            def __init__(self):
+                self._cache = {}
+    
+        D.qux = cm._locked(
+            method,
+            cache=lambda self: self._cache,
+            key=lambda self, x: x,
+            lock=lambda self: lock,
+        )
+    
+        # Using the descriptor via the class (i.e., as a classmethod) should warn
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+>           result = D.qux(10)  # class access
+                     ^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:350: in __call__
+    return wrapper(self._obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/cachetools/_cachedmethod.py:322: in wrapper
+    c = cache(self)
+        ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None
+
+>       cache=lambda self: self._cache,
+                           ^^^^^^^^^^^
+        key=lambda self, x: x,
+        lock=lambda self: lock,
+    )
+E   AttributeError: 'NoneType' object has no attribute '_cache'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:141: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_deprecated_classmethod_warning.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0945
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_descriptor_without_dict_raises_type_error ________________
+
+    def test_descriptor_without_dict_raises_type_error():
+        """Objects without a __dict__ should raise a TypeError when caching is attempted."""
+        def method(self, x):
+            return x
+    
+        class NoDict:
+            __slots__ = ()  # no __dict__
+    
+            def __init__(self):
+                self._cache = {}
+    
+        NoDict.cached = cm._unlocked(
+            method,
+            cache=lambda self: self._cache,
+            key=lambda self, x: x,
+        )
+    
+>       nd = NoDict()
+             ^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <heal_yield_generated.test_cachetools__cachedmethod.test_descriptor_without_dict_raises_type_error.<locals>.NoDict object at 0x103abff80>
+
+    def __init__(self):
+>       self._cache = {}
+        ^^^^^^^^^^^
+E       AttributeError: 'NoDict' object has no attribute '_cache' and no __dict__ for setting new attributes. Did you mean: 'cached'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:172: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0985
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_wrapper_properties_exposed_on_descriptor _________________
+
+    def test_wrapper_properties_exposed_on_descriptor():
+        """The wrapper returned by _wrapper should expose cache, cache_key, etc."""
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+    
+        def method(self, x):
+            return x * 10
+    
+        # Use _wrapper directly to get a descriptor with all properties set
+        descriptor = cm._wrapper(
+            method,
+            cache=lambda self: self._cache,
+            key=lambda self, x: x,
+            lock=lock,
+            cond=cond,
+            info=lambda cache, h, m: (h, m),
+        )
+    
+        class E:
+            def __init__(self):
+                self._cache = {}
+    
+        # Attach descriptor
+        E.f = descriptor
+    
+        e = E()
+        # The descriptor itself should have the properties set (as per _wrapper)
+        assert hasattr(descriptor, "cache")
+        assert hasattr(descriptor, "cache_key")
+        assert hasattr(descriptor, "cache_lock")
+        assert hasattr(descriptor, "cache_condition")
+    
+        # Ensure they point to the original callables
+>       assert descriptor.cache is (lambda self: self._cache)
+E       assert <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998040> is <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998220>
+E        +  where <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998040> = <cachetools._cachedmethod._condition_info.<locals>.Descriptor object at 0x103722ba0>.cache
+
+heal_yield_generated/test_cachetools__cachedmethod.py:220: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+1 failed in 0.02s
+
+--- stderr ---
+
+

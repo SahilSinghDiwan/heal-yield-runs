@@ -1,0 +1,44 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_value_error_on_cache_set_is_handled_gracefully.jsonl heal_yield_generated/test_cachetools__cached.py::test_value_error_on_cache_set_is_handled_gracefully
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1028
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_value_error_on_cache_set_is_handled_gracefully ______________
+
+    def test_value_error_on_cache_set_is_handled_gracefully():
+        """If the cache raises ValueError on set, the wrapper should still return the computed value."""
+        class BadCache(dict):
+            def __setitem__(self, key, value):
+                raise ValueError("Too large")
+    
+        def func(x):
+            return x * 10
+    
+        cache = BadCache()
+        key = lambda x: x
+        lock = threading.Lock()
+        wrapped = cached_module._wrapper(func, cache, key, lock=lock, info=lambda h, m: (h, m))
+    
+        # First call attempts to store in cache, which raises ValueError, but should still return correct result
+        assert wrapped(2) == 20
+        # Subsequent call should compute again (since cache never stored the value)
+        assert wrapped(2) == 20
+    
+        # Cache should remain empty
+>       assert dict(cache) == {}
+E       assert {2: 20} == {}
+E         
+E         Left contains 1 more item:
+E         {2: 20}
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cached.py:170: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_value_error_on_cache_set_is_handled_gracefully.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_value_error_on_cache_set_is_handled_gracefully
+1 failed in 0.02s
+
+--- stderr ---

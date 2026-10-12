@@ -1,0 +1,55 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecated_warning
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0939
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_classmethod_deprecated_warning ______________________
+
+    def test_classmethod_deprecated_warning():
+        """Using @cachedmethod on a classmethod should emit a DeprecationWarning."""
+        def _func(cls, x):
+            return x - 1
+    
+        class Qux:
+            _cache = {}
+            # No lock/cond/info -> deprecated classmethod handling path
+            compute = _cachedmethod._wrapper(
+                _func,
+                cache=lambda cls: cls._cache,
+                key=lambda cls, x: x,
+            )
+    
+        # Access via class should give the descriptor itself; calling it should warn
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always", DeprecationWarning)
+>           result = Qux.compute(5)  # invokes the descriptor's __call__
+                     ^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cachedmethod.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cachedmethod.py:384: in __call__
+    return wrapper(self._obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/cachetools/_cachedmethod.py:361: in wrapper
+    c = cache(self)
+        ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = None
+
+>       cache=lambda cls: cls._cache,
+                          ^^^^^^^^^^
+        key=lambda cls, x: x,
+    )
+E   AttributeError: 'NoneType' object has no attribute '_cache'
+
+heal_yield_generated/test_cachetools__cachedmethod.py:61: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_classmethod_deprecated_warning.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_classmethod_deprecated_warning
+1 failed in 0.02s
+
+--- stderr ---

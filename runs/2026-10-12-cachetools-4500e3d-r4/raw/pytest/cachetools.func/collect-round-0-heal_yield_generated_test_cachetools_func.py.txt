@@ -1,0 +1,18 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest --collect-only -q --no-header -p no:cacheprovider heal_yield_generated/test_cachetools_func.py
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0895
+--- stdout ---
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_typed_cache_distinguishes_types
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_behaviour
+
+8 tests collected in 0.01s
+
+--- stderr ---

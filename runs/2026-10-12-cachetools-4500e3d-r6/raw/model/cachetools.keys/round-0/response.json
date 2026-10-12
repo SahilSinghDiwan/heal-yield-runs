@@ -1,0 +1,18 @@
+{
+  "id": "msg_bcf1b4777831b89700198e48",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport builtins\n\nimport pytest\nimport cachetools.keys as keys\n\n\ndef test_hashkey_without_kwargs():\n    key = keys.hashkey(1, \"a\")\n    # The key should be an instance of the internal _HashedTuple\n    assert isinstance(key, keys._HashedTuple)\n    # Its tuple representation must match the arguments\n    assert tuple(key) == (1, \"a\")\n    # The hash of the key must equal the hash of the underlying tuple\n    assert hash(key) == hash((1, \"a\"))\n\n\ndef test_hashkey_with_kwargs():\n    # kwargs are sorted by key name\n    key = keys.hashkey(1, b=2, a=3)\n    # Expected tuple: args + sentinel + sorted kwargs items\n    expected = (1,) + keys._kwmark + ((\"a\", 3), (\"b\", 2))\n    assert isinstance(key, keys._HashedTuple)\n    assert tuple(key) == expected\n    # The sentinel is the unique class object stored in _kwmark\n    assert key[1] is keys._kwmark[0]\n    # Hash must match the hash of the underlying tuple\n    assert hash(key) == hash(expected)\n\n\ndef test_methodkey_forwards_to_hashkey():\n    class Dummy:\n        def method(self, *args, **kwargs):\n            return keys.methodkey(self, *args, **kwargs)\n\n    d = Dummy()\n    key = d.method(10, x=5)\n    # methodkey should ignore the bound instance and behave like hashkey\n    expected = keys.hashkey(10, x=5)\n    assert isinstance(key, keys._HashedTuple)\n    assert key == expected\n\n\ndef test_typedkey_without_kwargs():\n    key = keys.typedkey(1, \"s\")\n    # Expected: original args followed by their types\n    base = (1, \"s\")\n    types = (int, str)\n    expected = base + types\n    assert isinstance(key, keys._HashedTuple)\n    assert tuple(key) == expected\n    assert hash(key) == hash(expected)\n\n\ndef test_typedkey_with_kwargs():\n    # kwargs are sorted, then types for kw values, then types for args\n    key = keys.typedkey(1, a=2, b=\"x\")\n    sorted_items = ((\"a\", 2), (\"b\", \"x\"))\n    base = (1,) + keys._kwmark + sorted_items\n    kw_types = (int, str)   # types of 2 and \"x\"\n    arg_types = (int,)      # type of positional arg 1\n    expected = base + kw_types + arg_types\n    assert isinstance(key, keys._HashedTuple)\n    assert tuple(key) == expected\n    assert hash(key) == hash(expected)\n\n\ndef test_typedmethodkey_forwards_to_typedkey():\n    class C:\n        def m(self, *args, **kwargs):\n            return keys.typedmethodkey(self, *args, **kwargs)\n\n    c = C()\n    key = c.m(3, y=4)\n    expected = keys.typedkey(3, y=4)\n    assert isinstance(key, keys._HashedTuple)\n    assert key == expected\n\n\ndef test_hash_caching_behavior():\n    key = keys.hashkey(1, 2, 3)\n    # First hash computation\n    h1 = hash(key)\n    # Subsequent hash calls must return the same cached value\n    h2 = hash(key)\n    assert h1 == h2\n    # The internal cache attribute should now be set to the computed hash\n    # Name\u2011mangling reveals the private attribute on the instance\n    cached = getattr(key, \"_HashedTuple__hashvalue\")\n    assert cached == h1\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 664,
+    "output_tokens": 1903
+  }
+}

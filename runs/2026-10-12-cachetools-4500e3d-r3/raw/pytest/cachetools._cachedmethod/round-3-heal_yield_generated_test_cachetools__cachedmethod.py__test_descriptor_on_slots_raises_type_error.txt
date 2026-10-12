@@ -1,0 +1,26 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 4
+# timed_out: False
+# duration_s: 0.0945
+--- stdout ---
+
+==================================== ERRORS ====================================
+_ ERROR collecting .heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py _
+ImportError while importing test module '/Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+heal_yield_generated/test_cachetools__cachedmethod.py:6: in <module>
+    from cachetools._cachedmethod import _wrapper, _call_set_name
+E   ImportError: cannot import name '_call_set_name' from 'cachetools._cachedmethod' (/Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/src/cachetools/_cachedmethod.py)
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl -
+=========================== short test summary info ============================
+ERROR heal_yield_generated/test_cachetools__cachedmethod.py
+1 error in 0.01s
+
+--- stderr ---
+ERROR: found no collectors for /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+

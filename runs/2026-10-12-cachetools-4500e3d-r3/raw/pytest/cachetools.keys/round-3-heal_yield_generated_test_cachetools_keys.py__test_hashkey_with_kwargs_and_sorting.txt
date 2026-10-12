@@ -1,0 +1,27 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_and_sorting.jsonl heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_and_sorting
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0954
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_hashkey_with_kwargs_and_sorting _____________________
+
+    def test_hashkey_with_kwargs_and_sorting():
+        key1 = keys.hashkey(1, b=2, a=3)
+        key2 = keys.hashkey(1, a=3, b=2)
+        # kwargs are sorted, so the keys should be equal
+        assert key1 == key2
+        # ensure the sentinel is present
+>       assert keys._kwmark in key1
+E       AssertionError: assert (<class 'cachetools.keys._HashedTuple'>,) in (1, <class 'cachetools.keys._HashedTuple'>, ('a', 3), ('b', 2))
+E        +  where (<class 'cachetools.keys._HashedTuple'>,) = keys._kwmark
+
+heal_yield_generated/test_cachetools_keys.py:20: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_hashkey_with_kwargs_and_sorting.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_hashkey_with_kwargs_and_sorting
+1 failed in 0.02s
+
+--- stderr ---

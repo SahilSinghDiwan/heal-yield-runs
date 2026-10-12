@@ -1,0 +1,49 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_locked_cache_hits_and_misses.jsonl heal_yield_generated/test_cachetools__cached.py::test_locked_cache_hits_and_misses
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0908
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________________ test_locked_cache_hits_and_misses _______________________
+
+    def test_locked_cache_hits_and_misses():
+        """Locked cache should count hits and misses correctly via cache_info."""
+        hits_misses = []
+    
+        def info(h, m):
+            hits_misses.append((h, m))
+            return (h, m)
+    
+        def func(x):
+            return x + 1
+    
+        cache = {}
+        key = lambda x: x
+        lock = threading.Lock()
+        wrapped = cached_module._wrapper(func, cache, key, lock=lock, info=info)
+    
+        # First call: miss
+        assert wrapped(5) == 6
+        # Second call: hit
+        assert wrapped(5) == 6
+        # Third call with new key: miss
+        assert wrapped(7) == 8
+    
+        # cache_info should have been called implicitly only when accessed.
+        # Access it now to trigger the info callback.
+>       assert wrapped.cache_info() == (2, 1)  # 2 hits, 1 miss
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert (1, 2) == (2, 1)
+E         
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cached.py:56: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cached/round-2-heal_yield_generated_test_cachetools__cached.py__test_locked_cache_hits_and_misses.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_locked_cache_hits_and_misses
+1 failed in 0.02s
+
+--- stderr ---

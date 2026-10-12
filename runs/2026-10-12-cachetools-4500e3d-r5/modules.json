@@ -1,0 +1,88 @@
+{
+  "considered": [
+    {
+      "excluded_because": "excluded basename",
+      "module": "cachetools.__init__",
+      "path": "src/cachetools/__init__.py",
+      "statements": 530
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools._cached",
+      "path": "src/cachetools/_cached.py",
+      "statements": 198
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools._cachedmethod",
+      "path": "src/cachetools/_cachedmethod.py",
+      "statements": 286
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools.func",
+      "path": "src/cachetools/func.py",
+      "statements": 48
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools.keys",
+      "path": "src/cachetools/keys.py",
+      "statements": 31
+    }
+  ],
+  "package": "cachetools",
+  "package_root": "src/cachetools",
+  "rule": {
+    "excluded_basenames": [
+      "__init__.py",
+      "__main__.py",
+      "conftest.py",
+      "setup.py"
+    ],
+    "excluded_path_parts": [
+      "tests",
+      "test",
+      "testing",
+      ".tox",
+      ".venv",
+      "build",
+      "docs"
+    ],
+    "excluded_patterns": [
+      "_compat*",
+      "compat*",
+      "_version*",
+      "version*"
+    ],
+    "min_statements": 20,
+    "tie_break": "path ascending",
+    "top_n": 5
+  },
+  "selected": [
+    {
+      "excluded_because": null,
+      "module": "cachetools._cachedmethod",
+      "path": "src/cachetools/_cachedmethod.py",
+      "statements": 286
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools._cached",
+      "path": "src/cachetools/_cached.py",
+      "statements": 198
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools.func",
+      "path": "src/cachetools/func.py",
+      "statements": 48
+    },
+    {
+      "excluded_because": null,
+      "module": "cachetools.keys",
+      "path": "src/cachetools/keys.py",
+      "statements": 31
+    }
+  ]
+}

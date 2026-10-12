@@ -1,0 +1,11 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.jsonl heal_yield_generated/test_cachetools__cached.py::test_condition_wrapper_blocks_and_caches
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1079
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_wrapper_blocks_and_caches.jsonl -
+1 passed in 0.03s
+
+--- stderr ---

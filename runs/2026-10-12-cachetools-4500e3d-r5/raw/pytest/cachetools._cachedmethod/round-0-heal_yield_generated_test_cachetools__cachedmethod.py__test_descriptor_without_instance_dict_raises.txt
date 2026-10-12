@@ -1,0 +1,43 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_instance_dict_raises.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_instance_dict_raises
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1016
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_descriptor_without_instance_dict_raises _________________
+
+    def test_descriptor_without_instance_dict_raises():
+        """Accessing a cachedmethod on an object without __dict__ should raise TypeError."""
+        def compute(self, x):
+            return x
+    
+        cache = {}
+        key = lambda self, x: x
+    
+        descriptor = _cachedmethod._wrapper(compute, lambda self: cache, key)
+    
+        class B:
+            __slots__ = ()
+            method = descriptor
+    
+        b = B()
+        # Accessing the method should raise a TypeError with a specific message
+>       with pytest.raises(TypeError) as exc:
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE TypeError
+
+heal_yield_generated/test_cachetools__cachedmethod.py:64: Failed
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_instance_dict_raises
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:65: DeprecationWarning: No '__dict__' attribute on 'B' instance to cache 'method' property.
+    b.method(1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r5/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_instance_dict_raises.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_instance_dict_raises
+1 failed, 1 warning in 0.02s
+
+--- stderr ---

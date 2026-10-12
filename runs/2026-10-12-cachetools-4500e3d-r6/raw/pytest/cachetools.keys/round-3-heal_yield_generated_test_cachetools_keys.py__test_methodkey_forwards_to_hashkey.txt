@@ -1,0 +1,31 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_methodkey_forwards_to_hashkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0916
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________________ test_methodkey_forwards_to_hashkey ______________________
+
+    def test_methodkey_forwards_to_hashkey():
+        class Dummy:
+            def mk(self, *args, **kwargs):
+                return keys.methodkey(*args, **kwargs)
+    
+        d = Dummy()
+        # methodkey should behave exactly like hashkey.
+>       assert tuple_contents(d.mk(1, a=2)) == tuple_contents(keys.hashkey(1, a=2))
+E       AssertionError: assert (<class 'cach...e'>, ('a', 2)) == (1, <class 'c...e'>, ('a', 2))
+E         
+E         At index 0 diff: <class 'cachetools.keys._HashedTuple'> != 1
+E         Right contains one more item: ('a', 2)
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:43: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_methodkey_forwards_to_hashkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_methodkey_forwards_to_hashkey
+1 failed in 0.01s
+
+--- stderr ---

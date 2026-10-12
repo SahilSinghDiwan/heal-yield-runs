@@ -1,0 +1,60 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0893
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_wrapper_properties_exposed_on_descriptor _________________
+
+    def test_wrapper_properties_exposed_on_descriptor():
+        """The wrapper returned by _wrapper should expose cache, cache_key, etc."""
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+    
+        def method(self, x):
+            return x * 10
+    
+        cache_func = lambda self: self._cache
+        key_func = lambda self, x: x
+        info_func = lambda cache, h, m: (h, m)
+    
+        # Use _wrapper directly to get a descriptor with all properties set
+        descriptor = cm._wrapper(
+            method,
+            cache=cache_func,
+            key=key_func,
+            lock=lambda self: lock,
+            cond=lambda self: cond,
+            info=info_func,
+        )
+    
+        class E:
+            def __init__(self):
+                self._cache = {}
+    
+            # attach descriptor
+            f = descriptor
+    
+        e = E()
+        # The descriptor itself should have the properties set (as per _wrapper)
+        assert hasattr(descriptor, "cache")
+        assert hasattr(descriptor, "cache_key")
+        assert hasattr(descriptor, "cache_lock")
+        assert hasattr(descriptor, "cache_condition")
+    
+        # Ensure they point to the original callables (or objects for lock/cond)
+        assert descriptor.cache is cache_func
+        assert descriptor.cache_key is key_func
+>       assert descriptor.cache_lock is lock
+E       assert <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x105a9bc40> is <unlocked _thread.lock object at 0x105a5f890>
+E        +  where <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x105a9bc40> = <cachetools._cachedmethod._condition_info.<locals>.Descriptor object at 0x10582aba0>.cache_lock
+
+heal_yield_generated/test_cachetools__cachedmethod.py:148: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+1 failed in 0.01s
+
+--- stderr ---

@@ -1,0 +1,51 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0888
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_descriptor_without_dict_raises_type_error ________________
+
+    def test_descriptor_without_dict_raises_type_error():
+        """Accessing a cachedmethod on an object without __dict__ should raise TypeError."""
+        lock = threading.Lock()
+    
+        def method(self, x):
+            return x
+    
+        cache_func = lambda self: {}
+        key_func = lambda self, x: x
+    
+        descriptor = cm._wrapper(
+            method,
+            cache=cache_func,
+            key=key_func,
+            lock=lambda self: lock,
+        )
+    
+        class NoDict:
+            __slots__ = ()
+    
+            h = descriptor
+    
+        nd = NoDict()
+        # Accessing the descriptor should raise TypeError because __dict__ is missing
+>       with pytest.raises(TypeError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE TypeError
+
+heal_yield_generated/test_cachetools__cachedmethod.py:116: Failed
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:117: DeprecationWarning: No '__dict__' attribute on 'NoDict' instance to cache 'h' property.
+    nd.h(1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-3-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_without_dict_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_without_dict_raises_type_error
+1 failed, 1 warning in 0.01s
+
+--- stderr ---

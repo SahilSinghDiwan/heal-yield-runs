@@ -1,0 +1,51 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1038
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_rr_cache_deterministic_replacement ____________________
+
+    def test_rr_cache_deterministic_replacement():
+        # deterministic choice: always evict the first key in the internal dict order
+        def deterministic_choice(seq):
+            # seq is a sequence of keys; pick the first
+            return seq[0]
+    
+        f = make_counter()
+        cached_f = func.rr_cache(maxsize=2, choice=deterministic_choice)(f)
+    
+        # Fill cache
+        assert cached_f('x') == 'xx'
+        assert cached_f('y') == 'yy'
+        assert f.calls["cnt"] == 2
+    
+        # Insert third key; deterministic_choice will evict the first key ('x')
+        assert cached_f('z') == 'zz'
+        assert f.calls["cnt"] == 3
+    
+        # 'x' should be recomputed
+        assert cached_f('x') == 'xx'
+        assert f.calls["cnt"] == 4
+    
+        # Cache now contains 'y' and 'x' (order may vary, but both present)
+>       assert set(cached_f.cache) == {'y', 'x'}
+E       AssertionError: assert {('x',), ('z',)} == {'x', 'y'}
+E         
+E         Extra items in the left set:
+E         ('x',)
+E         ('z',)
+E         Extra items in the right set:
+E         'y'
+E         'x'
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:121: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+1 failed in 0.02s
+
+--- stderr ---

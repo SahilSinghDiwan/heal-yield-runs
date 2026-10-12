@@ -1,0 +1,40 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_set_name_conflict_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0923
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_descriptor_set_name_conflict_raises_type_error ______________
+
+    def test_descriptor_set_name_conflict_raises_type_error():
+        """Assigning the same descriptor to two different attribute names raises TypeError."""
+        def _func(self, x):
+            return x
+    
+        descriptor = _cachedmethod._wrapper(
+            _func,
+            cache=lambda self: {},
+            key=lambda self, x: x,
+        )
+    
+>       class Foo:
+
+heal_yield_generated/test_cachetools__cachedmethod.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    class Foo:
+        a = descriptor
+        # Attempt to assign the same descriptor instance to a different name
+>       with pytest.raises(TypeError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE TypeError
+
+heal_yield_generated/test_cachetools__cachedmethod.py:118: Failed
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_set_name_conflict_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_set_name_conflict_raises_type_error
+1 failed in 0.01s
+
+--- stderr ---

@@ -1,0 +1,37 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_info_caching_and_cache_info.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0888
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_info_caching_and_cache_info _______________________
+
+    def test_info_caching_and_cache_info():
+        """Caching with an info function should expose hit/miss statistics."""
+        cache = {}
+        key = lambda self, x: x
+        info = lambda c, hits, misses: (len(c), hits, misses)
+    
+        class C:
+            def compute(self, x):
+                return x + 2
+    
+        C.compute = _wrapper(
+            C.compute,
+            cache=lambda obj: cache,
+            key=key,
+            info=info,
+        )
+>       C.compute.__set_name__(C, "compute")
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Wrapper' object has no attribute '__set_name__'. Did you mean: '__getstate__'?
+
+heal_yield_generated/test_cachetools__cachedmethod.py:78: AttributeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-1-heal_yield_generated_test_cachetools__cachedmethod.py__test_info_caching_and_cache_info.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+1 failed in 0.01s
+
+--- stderr ---

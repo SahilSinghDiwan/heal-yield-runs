@@ -1,0 +1,126 @@
+### heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0923
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_fifo_cache_eviction.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0963
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_lru_cache_eviction ____________________________
+
+    def test_lru_cache_eviction():
+        f = make_counter()
+        cached_f = func.lru_cache(maxsize=2)(f)
+    
+        # Populate cache
+        assert cached_f("a") == "aa"
+        assert cached_f("b") == "bb"
+        assert f.calls["cnt"] == 2
+    
+        # Access 'a' to make it most-recently used
+        assert cached_f("a") == "aa"
+        assert f.calls["cnt"] == 2  # still cached
+    
+        # Insert new key, should evict 'a' (implementation evicts the oldest entry)
+        assert cached_f("c") == "cc"
+        assert f.calls["cnt"] == 3
+    
+        # 'a' should be recomputed
+        assert cached_f("a") == "aa"
+>       assert f.calls["cnt"] == 4
+E       assert 3 == 4
+
+heal_yield_generated/test_cachetools_func.py:88: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0908
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_replacement
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0922
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_replacement.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.jsonl heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0914
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_ttl_cache_expiration.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.jsonl heal_yield_generated/test_cachetools_func.py::test_typed_cache_separates_int_and_float
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0941
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_typed_cache_separates_int_and_float.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+
+### heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_parameters
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.jsonl heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_parameters
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0914
+--- stdout ---
+.                                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_unbounded_cache_parameters.jsonl -
+1 passed in 0.01s
+
+--- stderr ---
+
+

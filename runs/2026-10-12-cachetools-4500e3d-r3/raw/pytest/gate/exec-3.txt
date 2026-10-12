@@ -1,0 +1,196 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/gate/exec-3.jsonl heal_yield_generated/test_cachetools__cached.py::test_uncached_decorator_returns_original_result_and_has_no_effectful_cache_clear heal_yield_generated/test_cachetools__cached.py::test_uncached_info_tracks_misses_and_resets_on_clear heal_yield_generated/test_cachetools__cached.py::test_unlocked_caches_without_lock_and_hits_misses_are_not_tracked heal_yield_generated/test_cachetools__cached.py::test_unlocked_info_tracks_hits_and_misses heal_yield_generated/test_cachetools__cached.py::test_locked_caches_with_thread_lock_and_respects_race_condition heal_yield_generated/test_cachetools__cached.py::test_locked_info_tracks_hits_and_misses_and_respects_lock heal_yield_generated/test_cachetools__cached.py::test_condition_decorator_handles_pending_set_and_exception_cleanup heal_yield_generated/test_cachetools__cached.py::test_wrapper_attribute_exposure heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator heal_yield_generated/test_cachetools_func.py::test_typed_flag_separates_int_and_bool heal_yield_generated/test_cachetools_func.py::test_fifo_eviction_order heal_yield_generated/test_cachetools_func.py::test_rr_cache_with_deterministic_choice heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration heal_yield_generated/test_cachetools_func.py::test_none_maxsize_disables_caching heal_yield_generated/test_cachetools_keys.py::test_hashkey_simple_args heal_yield_generated/test_cachetools_keys.py::test_hashkey_hash_caching heal_yield_generated/test_cachetools_keys.py::test_methodkey_ignores_self heal_yield_generated/test_cachetools_keys.py::test_typedkey_without_kwargs heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaviour heal_yield_generated/test_cachetools_keys.py::test_empty_calls_return_empty_hashedtuple heal_yield_generated/test_cachetools_keys.py::test_hashedtuple_addition_preserves_type
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1330
+--- stdout ---
+........FFFFFF.......                                                    [100%]
+=================================== FAILURES ===================================
+_________________________ test_basic_caching_decorator _________________________
+
+    def test_basic_caching_decorator():
+        """A simple function should be cached after the first call."""
+        calls = {"count": 0}
+    
+        @cachefunc.lru_cache(maxsize=2)
+        def inc(x):
+            calls["count"] += 1
+            return x + 1
+    
+        # First call computes the result
+>       assert inc(1) == 2
+               ^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (1,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+____________________ test_typed_flag_separates_int_and_bool ____________________
+
+    def test_typed_flag_separates_int_and_bool():
+        """When typed=True, int 1 and bool True are cached separately."""
+        calls = {"count": 0}
+    
+        @cachefunc.lru_cache(maxsize=2, typed=True)
+        def identity(x):
+            calls["count"] += 1
+            return x
+    
+        # int 1
+>       assert identity(1) == 1
+               ^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (1,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+___________________________ test_fifo_eviction_order ___________________________
+
+    def test_fifo_eviction_order():
+        """FIFO cache should evict entries in insertion order."""
+        calls = {"order": []}
+    
+        @cachefunc.fifo_cache(maxsize=2)
+        def g(x):
+            calls["order"].append(x)
+            return x * 10
+    
+        # Insert two items
+>       assert g(1) == 10
+               ^^^^
+
+heal_yield_generated/test_cachetools_func.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (1,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+___________________ test_rr_cache_with_deterministic_choice ____________________
+
+    def test_rr_cache_with_deterministic_choice():
+        """RR cache with a deterministic choice function should evict predictably."""
+        # Deterministic choice: always pick the first key in the list
+        deterministic_choice = lambda seq: seq[0]
+    
+        calls = {"order": []}
+    
+        @cachefunc.rr_cache(maxsize=2, choice=deterministic_choice)
+        def h(x):
+            calls["order"].append(x)
+            return x - 5
+    
+        # Fill cache
+>       assert h(10) == 5
+               ^^^^^
+
+heal_yield_generated/test_cachetools_func.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (10,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+__________________________ test_ttl_cache_expiration ___________________________
+
+    def test_ttl_cache_expiration():
+        """TTL cache should expire entries after the given ttl."""
+        # Use a mutable timer to control time flow
+        current_time = [0.0]
+    
+        def fake_timer():
+            return current_time[0]
+    
+        calls = {"count": 0}
+    
+        @cachefunc.ttl_cache(maxsize=2, ttl=5, timer=fake_timer)
+        def square(x):
+            calls["count"] += 1
+            return x * x
+    
+        # First call caches result
+>       assert square(3) == 9
+               ^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (3,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+______________________ test_none_maxsize_disables_caching ______________________
+
+    def test_none_maxsize_disables_caching():
+        """When maxsize=None, the decorator should still cache (no size limit)."""
+        calls = {"count": 0}
+    
+        @cachefunc.lru_cache(maxsize=None)
+        def double(x):
+            calls["count"] += 1
+            return x * 2
+    
+        # First call computes
+>       assert double(5) == 10
+               ^^^^^^^^^
+
+heal_yield_generated/test_cachetools_func.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (5,), kwargs = {}
+
+    def wrapper(*args, **kwargs):
+        nonlocal hits, misses
+        k = key(*args, **kwargs)
+>       with lock:
+             ^^^^
+E       TypeError: 'NoneType' object does not support the context manager protocol
+
+src/cachetools/_cached.py:20: TypeError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/gate/exec-3.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator
+FAILED heal_yield_generated/test_cachetools_func.py::test_typed_flag_separates_int_and_bool
+FAILED heal_yield_generated/test_cachetools_func.py::test_fifo_eviction_order
+FAILED heal_yield_generated/test_cachetools_func.py::test_rr_cache_with_deterministic_choice
+FAILED heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration
+FAILED heal_yield_generated/test_cachetools_func.py::test_none_maxsize_disables_caching
+6 failed, 15 passed in 0.05s
+
+--- stderr ---

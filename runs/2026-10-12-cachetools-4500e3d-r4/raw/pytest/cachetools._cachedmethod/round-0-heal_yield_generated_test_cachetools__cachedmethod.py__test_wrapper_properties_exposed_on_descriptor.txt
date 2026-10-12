@@ -1,0 +1,54 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0985
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_wrapper_properties_exposed_on_descriptor _________________
+
+    def test_wrapper_properties_exposed_on_descriptor():
+        """The wrapper returned by _wrapper should expose cache, cache_key, etc."""
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+    
+        def method(self, x):
+            return x * 10
+    
+        # Use _wrapper directly to get a descriptor with all properties set
+        descriptor = cm._wrapper(
+            method,
+            cache=lambda self: self._cache,
+            key=lambda self, x: x,
+            lock=lock,
+            cond=cond,
+            info=lambda cache, h, m: (h, m),
+        )
+    
+        class E:
+            def __init__(self):
+                self._cache = {}
+    
+        # Attach descriptor
+        E.f = descriptor
+    
+        e = E()
+        # The descriptor itself should have the properties set (as per _wrapper)
+        assert hasattr(descriptor, "cache")
+        assert hasattr(descriptor, "cache_key")
+        assert hasattr(descriptor, "cache_lock")
+        assert hasattr(descriptor, "cache_condition")
+    
+        # Ensure they point to the original callables
+>       assert descriptor.cache is (lambda self: self._cache)
+E       assert <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998040> is <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998220>
+E        +  where <function test_wrapper_properties_exposed_on_descriptor.<locals>.<lambda> at 0x103998040> = <cachetools._cachedmethod._condition_info.<locals>.Descriptor object at 0x103722ba0>.cache
+
+heal_yield_generated/test_cachetools__cachedmethod.py:220: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools._cachedmethod/round-0-heal_yield_generated_test_cachetools__cachedmethod.py__test_wrapper_properties_exposed_on_descriptor.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor
+1 failed in 0.02s
+
+--- stderr ---

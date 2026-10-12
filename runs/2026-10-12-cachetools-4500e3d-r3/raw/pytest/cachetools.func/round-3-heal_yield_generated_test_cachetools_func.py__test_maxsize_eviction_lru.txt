@@ -1,0 +1,46 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_maxsize_eviction_lru.jsonl heal_yield_generated/test_cachetools_func.py::test_maxsize_eviction_lru
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0943
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________ test_maxsize_eviction_lru ___________________________
+
+    def test_maxsize_eviction_lru():
+        """LRU cache should evict the least‑recently used entry when full."""
+        calls = {"order": []}
+    
+        @cachefunc.lru_cache(maxsize=2)
+        def f(x):
+            calls["order"].append(x)
+            return x * 2
+    
+        # Fill cache
+        assert f(1) == 2
+        assert f(2) == 4
+        # Cache is full now; order list has two entries
+        assert calls["order"] == [1, 2]
+    
+        # Access 1 to make it most‑recently used
+        assert f(1) == 2
+        # Call a new key, causing eviction of 2 (the LRU)
+        assert f(3) == 6
+        # Now calling 2 should recompute
+        assert f(2) == 4
+        # The order list should reflect the recomputations
+>       assert calls["order"] == [1, 2, 1, 3, 2]
+E       assert [1, 2, 3, 2] == [1, 2, 1, 3, 2]
+E         
+E         At index 2 diff: 3 != 1
+E         Right contains one more item: 2
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:53: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.func/round-3-heal_yield_generated_test_cachetools_func.py__test_maxsize_eviction_lru.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_maxsize_eviction_lru
+1 failed in 0.02s
+
+--- stderr ---

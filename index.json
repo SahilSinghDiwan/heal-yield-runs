@@ -34,5 +34,77 @@
   "superseded_by": null,
   "tool_commit": "b2b7b3b",
   "notes": []
+ },
+ {
+  "dir": "runs/2026-10-12-cachetools-4500e3d-r3",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-12",
+  "status": "complete",
+  "headline_eligible": true,
+  "model": "gpt-oss-120b",
+  "n": 30,
+  "first_pass_green_pct": 30.0,
+  "post_heal_green_pct": 36.7,
+  "heal_yield_pct": 9.5,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "5b9edd8",
+  "notes": []
+ },
+ {
+  "dir": "runs/2026-10-12-cachetools-4500e3d-r4",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-12",
+  "status": "complete",
+  "headline_eligible": true,
+  "model": "gpt-oss-120b",
+  "n": 29,
+  "first_pass_green_pct": 34.5,
+  "post_heal_green_pct": 58.6,
+  "heal_yield_pct": 36.8,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "5b9edd8",
+  "notes": []
+ },
+ {
+  "dir": "runs/2026-10-12-cachetools-4500e3d-r5",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-12",
+  "status": "generator-failed",
+  "headline_eligible": false,
+  "model": "gpt-oss-120b",
+  "n": 27,
+  "first_pass_green_pct": 70.4,
+  "post_heal_green_pct": 70.4,
+  "heal_yield_pct": null,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "5b9edd8",
+  "notes": [
+   "generator-failed: the gateway returned a 502 at cachetools.keys in round 1, after 8 of 16 calls. Not headline-eligible. Left as written; r6 is its replacement. Percentages in this row are over the candidates reached and are not comparable."
+  ]
+ },
+ {
+  "dir": "runs/2026-10-12-cachetools-4500e3d-r6",
+  "repo": "cachetools",
+  "sha": "4500e3d",
+  "date": "2026-10-12",
+  "status": "complete",
+  "headline_eligible": true,
+  "model": "gpt-oss-120b",
+  "n": 27,
+  "first_pass_green_pct": 37.0,
+  "post_heal_green_pct": 70.4,
+  "heal_yield_pct": 52.9,
+  "manifest": "1.0.1",
+  "superseded_by": null,
+  "tool_commit": "5b9edd8",
+  "notes": [
+   "replacement for r5 (a gateway fault, not a result)."
+  ]
  }
 ]

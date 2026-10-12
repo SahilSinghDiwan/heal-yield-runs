@@ -1,0 +1,35 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaviour.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaviour
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0919
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_typedmethodkey_behaviour _________________________
+
+    def test_typedmethodkey_behaviour():
+        class Foo:
+            pass
+    
+        foo = Foo()
+        # typedmethodkey should ignore the first argument (self) like typedkey.
+        key1 = ck.typedmethodkey(foo, 3.14, flag=False)
+        key2 = ck.typedkey(3.14, flag=False)
+        assert key1 == key2
+        # Types should be correctly appended.
+        expected = (3.14, False, float, bool)
+>       assert tuple(key2) == expected
+E       AssertionError: assert (3.14, <class...lass 'float'>) == (3.14, False,...class 'bool'>)
+E         
+E         At index 1 diff: <class 'cachetools.keys._HashedTuple'> != False
+E         Left contains one more item: <class 'float'>
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:104: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-1-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_behaviour.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_behaviour
+1 failed in 0.02s
+
+--- stderr ---

@@ -1,0 +1,47 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_info_tracks_hits_and_misses_and_cleans_up_pending.jsonl heal_yield_generated/test_cachetools__cached.py::test_condition_info_tracks_hits_and_misses_and_cleans_up_pending
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0976
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_condition_info_tracks_hits_and_misses_and_cleans_up_pending _______
+
+    def test_condition_info_tracks_hits_and_misses_and_cleans_up_pending():
+        cache = {}
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+        calls = []
+    
+        def func(x):
+            calls.append(x)
+            return x * 3
+    
+        wrapper = cached._wrapper(func, cache=cache, key=simple_key,
+                                 lock=lock, cond=cond, info=info_func)
+    
+        # First call – miss
+        assert wrapper(5) == 15
+        assert wrapper.cache_info() == (0, 1)
+    
+        # Second call – hit
+        assert wrapper(5) == 15
+        assert wrapper.cache_info() == (1, 1)
+    
+        # Ensure pending set is cleared after each call (indirectly verified
+        # by the fact that subsequent calls succeed without deadlock)
+        assert wrapper(6) == 18
+>       assert wrapper.cache_info() == (2, 2)
+E       assert (1, 2) == (2, 2)
+E         
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools__cached.py:261: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cached/round-3-heal_yield_generated_test_cachetools__cached.py__test_condition_info_tracks_hits_and_misses_and_cleans_up_pending.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_condition_info_tracks_hits_and_misses_and_cleans_up_pending
+1 failed in 0.02s
+
+--- stderr ---

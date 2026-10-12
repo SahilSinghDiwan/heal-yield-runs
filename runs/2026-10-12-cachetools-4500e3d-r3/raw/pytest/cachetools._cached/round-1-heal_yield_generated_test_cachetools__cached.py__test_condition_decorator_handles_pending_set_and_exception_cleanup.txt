@@ -1,0 +1,64 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_condition_decorator_handles_pending_set_and_exception_cleanup.jsonl heal_yield_generated/test_cachetools__cached.py::test_condition_decorator_handles_pending_set_and_exception_cleanup
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0971
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_condition_decorator_handles_pending_set_and_exception_cleanup ______
+
+    def test_condition_decorator_handles_pending_set_and_exception_cleanup():
+        lock = threading.Lock()
+        cond = threading.Condition(lock)
+        cache = {}
+    
+        call_log = []
+    
+        def func(x):
+            call_log.append(x)
+            if x == "bad":
+                raise ValueError("bad input")
+            return f"val-{x}"
+    
+        wrapper = _cached._wrapper(
+            func,
+            cache=cache,
+            key=lambda x: x,
+            lock=lock,
+            cond=cond,
+        )
+    
+        # Normal call populates cache
+        assert wrapper("good") == "val-good"
+        assert cache["good"] == "val-good"
+    
+        # Exception should not leave the key in the pending set
+        with pytest.raises(ValueError):
+            wrapper("bad")
+        # After exception, we can still compute a good value for the same key
+>       assert wrapper("bad") == "val-bad"
+               ^^^^^^^^^^^^^^
+
+heal_yield_generated/test_cachetools__cached.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cachetools/_cached.py:157: in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = 'bad'
+
+    def func(x):
+        call_log.append(x)
+        if x == "bad":
+>           raise ValueError("bad input")
+E           ValueError: bad input
+
+heal_yield_generated/test_cachetools__cached.py:182: ValueError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cached/round-1-heal_yield_generated_test_cachetools__cached.py__test_condition_decorator_handles_pending_set_and_exception_cleanup.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cached.py::test_condition_decorator_handles_pending_set_and_exception_cleanup
+1 failed in 0.02s
+
+--- stderr ---

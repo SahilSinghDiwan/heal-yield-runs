@@ -1,0 +1,15 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest --collect-only -q --no-header -p no:cacheprovider heal_yield_generated/test_cachetools__cachedmethod.py
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.1364
+--- stdout ---
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_unlocked_caching_behaviour
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_thread_safety
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_info_caching_and_cache_info
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_deprecated_classmethod_warning
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+
+5 tests collected in 0.01s
+
+--- stderr ---

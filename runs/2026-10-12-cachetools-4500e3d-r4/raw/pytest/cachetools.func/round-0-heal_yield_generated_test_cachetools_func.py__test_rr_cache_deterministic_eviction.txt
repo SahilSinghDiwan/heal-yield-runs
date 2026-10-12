@@ -1,0 +1,46 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0984
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_rr_cache_deterministic_eviction _____________________
+
+    def test_rr_cache_deterministic_eviction():
+        """RR cache with a deterministic choice function should evict predictably."""
+        calls = {"cnt": 0}
+        # deterministic choice: always pick the first element
+        deterministic_choice = lambda seq: seq[0]
+    
+        @cachefunc.rr_cache(maxsize=2, choice=deterministic_choice)
+        def f(x):
+            calls["cnt"] += 1
+            return calls["cnt"]
+    
+        # Fill cache
+        assert f(1) == 1
+        assert f(2) == 2
+        assert calls["cnt"] == 2
+    
+        # Adding a third key evicts the first key (1) because deterministic_choice picks it
+        assert f(3) == 3
+        assert calls["cnt"] == 3
+    
+        # Key 1 must be recomputed
+        assert f(1) == 4
+        assert calls["cnt"] == 4
+    
+        # Key 2 should still be cached
+>       assert f(2) == 2
+E       assert 5 == 2
+E        +  where 5 = <function test_rr_cache_deterministic_eviction.<locals>.f at 0x101bd0720>(2)
+
+heal_yield_generated/test_cachetools_func.py:129: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_rr_cache_deterministic_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction
+1 failed in 0.02s
+
+--- stderr ---

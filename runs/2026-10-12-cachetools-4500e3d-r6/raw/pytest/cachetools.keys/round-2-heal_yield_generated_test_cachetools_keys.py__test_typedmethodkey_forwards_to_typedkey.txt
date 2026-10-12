@@ -1,0 +1,38 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_forwards_to_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0921
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_typedmethodkey_forwards_to_typedkey ___________________
+
+    def test_typedmethodkey_forwards_to_typedkey():
+        class Dummy:
+            def mk(self, *args, **kwargs):
+                return keys.typedmethodkey(self, *args, **kwargs)
+    
+        d = Dummy()
+        key = d.mk(5, y="z")
+        expected = (
+            5,
+            keys._HashedTuple,
+            ("y", "z"),
+            int,   # type of positional arg
+            str,   # type of kwarg value
+        )
+        assert isinstance(key, keys._HashedTuple)
+>       assert tuple_contents(key) == expected
+E       AssertionError: assert (5, <class 'c...<class 'int'>) == (5, <class 'c...<class 'str'>)
+E         
+E         At index 3 diff: <class 'str'> != <class 'int'>
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:82: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.keys/round-2-heal_yield_generated_test_cachetools_keys.py__test_typedmethodkey_forwards_to_typedkey.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_forwards_to_typedkey
+1 failed in 0.01s
+
+--- stderr ---

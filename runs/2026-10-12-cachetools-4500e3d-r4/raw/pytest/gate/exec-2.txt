@@ -1,0 +1,11 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/gate/exec-2.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_locked_caching_and_info heal_yield_generated/test_cachetools__cachedmethod.py::test_condition_caching heal_yield_generated/test_cachetools__cachedmethod.py::test_wrapper_properties_exposed_on_descriptor heal_yield_generated/test_cachetools__cached.py::test_unlocked_cache_basic heal_yield_generated/test_cachetools__cached.py::test_locked_cache_hits_and_misses heal_yield_generated/test_cachetools__cached.py::test_condition_cache_with_pending heal_yield_generated/test_cachetools__cached.py::test_uncached_with_info_counts_misses heal_yield_generated/test_cachetools__cached.py::test_uncached_without_info_has_no_cache_info heal_yield_generated/test_cachetools__cached.py::test_wrapper_attributes_are_set_correctly heal_yield_generated/test_cachetools_func.py::test_fifo_cache_eviction heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction heal_yield_generated/test_cachetools_func.py::test_rr_cache_deterministic_eviction heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration heal_yield_generated/test_cachetools_func.py::test_decorator_without_parentheses heal_yield_generated/test_cachetools_func.py::test_unbounded_cache_behaviour heal_yield_generated/test_cachetools_keys.py::test_typedmethodkey_forwards_to_typedkey
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.6369
+--- stdout ---
+.................                                                        [100%]
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r4/raw/pytest/gate/exec-2.jsonl -
+17 passed in 0.29s
+
+--- stderr ---

@@ -1,0 +1,47 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0895
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_descriptor_on_slots_raises_type_error __________________
+
+    def test_descriptor_on_slots_raises_type_error():
+        """A descriptor applied to a class with __slots__ (no __dict__) should raise TypeError."""
+        class C:
+            __slots__ = ("_cache",)  # allow storage of the cache but no __dict__
+    
+            def __init__(self):
+                self._cache = {}
+    
+            def compute(self, x):
+                return x
+    
+        cache_fn = lambda obj: obj._cache
+        key_fn = lambda obj, x: x
+    
+        C.compute = _wrapper(C.compute, cache=cache_fn, key=key_fn)
+        # __set_name__ should be called; the subsequent attribute access will raise
+        _call_set_name(C, "compute")
+    
+        c = C()
+        # Accessing the method should raise TypeError because the instance lacks __dict__
+>       with pytest.raises(TypeError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE TypeError
+
+heal_yield_generated/test_cachetools__cachedmethod.py:165: Failed
+=============================== warnings summary ===============================
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+  /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools/heal_yield_generated/test_cachetools__cachedmethod.py:166: DeprecationWarning: No '__dict__' attribute on 'C' instance to cache 'compute' property.
+    c.compute(1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools._cachedmethod/round-2-heal_yield_generated_test_cachetools__cachedmethod.py__test_descriptor_on_slots_raises_type_error.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools__cachedmethod.py::test_descriptor_on_slots_raises_type_error
+1 failed, 1 warning in 0.01s
+
+--- stderr ---

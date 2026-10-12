@@ -1,0 +1,50 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.1111
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_lfu_cache_eviction ____________________________
+
+    def test_lfu_cache_eviction():
+        f = make_counter()
+        cached_f = func.lfu_cache(maxsize=2)(f)
+    
+        # Insert two keys
+        assert cached_f(10) == 20
+        assert cached_f(20) == 40
+        assert f.calls["cnt"] == 2
+    
+        # Access 10 again – frequency of 10 becomes 2
+        assert cached_f(10) == 20
+        assert f.calls["cnt"] == 2
+    
+        # Insert third key, LFU should evict 20 (freq 1)
+        assert cached_f(30) == 60
+        assert f.calls["cnt"] == 3
+    
+        # 20 should be recomputed
+        assert cached_f(20) == 40
+        assert f.calls["cnt"] == 4
+    
+        # Cache now holds 10 and 20
+>       assert set(cached_f.cache) == {10, 20}
+E       assert {(10,), (20,)} == {10, 20}
+E         
+E         Extra items in the left set:
+E         (20,)
+E         (10,)
+E         Extra items in the right set:
+E         10
+E         20
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_func.py:95: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-0-heal_yield_generated_test_cachetools_func.py__test_lfu_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_lfu_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---

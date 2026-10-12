@@ -1,0 +1,18 @@
+{
+  "id": "msg_ff84f0858490f26e437e9eb6",
+  "type": "message",
+  "role": "assistant",
+  "model": "gpt-oss-120b",
+  "content": [
+    {
+      "type": "text",
+      "text": "```python\nimport pytest\nimport cachetools.keys as ck\n\n\ndef test_hashkey_simple_args():\n    key = ck.hashkey(1, 2, \"a\")\n    # The key should be an instance of the internal _HashedTuple.\n    assert isinstance(key, ck._HashedTuple)\n    # Its contents should match the provided positional arguments.\n    assert tuple(key) == (1, 2, \"a\")\n    # Hashing the key twice should yield the same cached hash value.\n    h1 = hash(key)\n    h2 = hash(key)\n    assert h1 == h2\n\n\ndef test_hashkey_with_kwargs_and_sorting():\n    # Keyword arguments are sorted and separated by the sentinel.\n    key = ck.hashkey(1, b=2, a=3)\n    # The sentinel class appears as the second element of the tuple.\n    assert ck._HashedTuple in key\n    # The full tuple representation should reflect sorted kwargs.\n    assert tuple(key) == (1, ck._HashedTuple, (\"a\", 3), (\"b\", 2))\n\n\ndef test_hashkey_hash_caching():\n    key = ck.hashkey(\"x\")\n    h1 = hash(key)\n    h2 = hash(key)\n    assert h1 == h2\n\n\ndef test_methodkey_ignores_self():\n    class Dummy:\n        pass\n\n    dummy = Dummy()\n    # methodkey forwards to hashkey, ignoring the first (self) argument.\n    key = ck.methodkey(dummy, 10, foo=\"bar\")\n    expected = ck.hashkey(10, foo=\"bar\")\n    assert key == expected\n\n\ndef test_typedkey_without_kwargs():\n    key = ck.typedkey(1, \"s\")\n    # Types of the positional arguments are appended at the end.\n    assert tuple(key)[-2:] == (int, str)\n\n\ndef test_typedkey_with_kwargs():\n    key = ck.typedkey(1, flag=True, name=\"bob\")\n    tup = tuple(key)\n    # The sentinel class should be present in the tuple.\n    assert ck._HashedTuple in tup\n    # Types for both positional and keyword arguments should be present.\n    assert int in tup\n    assert bool in tup\n    assert str in tup\n\n\ndef test_typedmethodkey_behaviour():\n    class Foo:\n        pass\n\n    foo = Foo()\n    # typedmethodkey should ignore the first argument (self) like typedkey.\n    key1 = ck.typedmethodkey(foo, 3.14, flag=False)\n    key2 = ck.typedkey(3.14, flag=False)\n    assert key1 == key2\n    # Types are appended at the end; order is kwarg types then arg types.\n    tup = tuple(key2)\n    assert tup[-2:] == (bool, float) or tup[-2:] == (float, bool)\n\n\ndef test_empty_calls_return_empty_hashedtuple():\n    key = ck.hashkey()\n    assert isinstance(key, ck._HashedTuple)\n    assert len(key) == 0\n\n\ndef test_hashedtuple_addition_preserves_type():\n    a = ck._HashedTuple((1, 2))\n    b = a + (3,)\n    assert isinstance(b, ck._HashedTuple)\n    assert tuple(b) == (1, 2, 3)\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 3710,
+    "output_tokens": 2475
+  }
+}

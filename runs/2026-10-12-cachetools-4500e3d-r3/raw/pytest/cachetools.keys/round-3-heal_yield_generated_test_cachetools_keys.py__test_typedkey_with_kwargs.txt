@@ -1,0 +1,35 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.jsonl heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0940
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________ test_typedkey_with_kwargs ___________________________
+
+    def test_typedkey_with_kwargs():
+        key = keys.typedkey(1, a="b", c=3)
+        # order: args, sentinel, sorted kwargs, types of kw values, types of args
+        expected = (
+            1,
+            keys._kwmark,
+            ("a", "b"),
+            ("c", 3),
+            str,
+            int,
+            int,
+        )
+>       assert key == expected
+E       AssertionError: assert (1, <class 'c...<class 'int'>) == (1, (<class '...s 'int'>, ...)
+E         
+E         At index 1 diff: <class 'cachetools.keys._HashedTuple'> != (<class 'cachetools.keys._HashedTuple'>,)
+E         Use -v to get more diff
+
+heal_yield_generated/test_cachetools_keys.py:66: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r3/raw/pytest/cachetools.keys/round-3-heal_yield_generated_test_cachetools_keys.py__test_typedkey_with_kwargs.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_keys.py::test_typedkey_with_kwargs
+1 failed in 0.02s
+
+--- stderr ---

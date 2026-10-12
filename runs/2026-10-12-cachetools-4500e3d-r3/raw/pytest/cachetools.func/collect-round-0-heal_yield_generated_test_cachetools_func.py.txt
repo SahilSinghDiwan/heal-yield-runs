@@ -1,0 +1,21 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest --collect-only -q --no-header -p no:cacheprovider heal_yield_generated/test_cachetools_func.py
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 0
+# timed_out: False
+# duration_s: 0.0890
+--- stdout ---
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator[fifo_cache]
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator[lfu_cache]
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator[lru_cache]
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator[rr_cache]
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_basic_caching_decorator[ttl_cache]
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_maxsize_eviction_lru
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_typed_flag_separates_int_and_bool
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_fifo_eviction_order
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_rr_cache_with_deterministic_choice
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_ttl_cache_expiration
+.heal-yield-work/cachetools/heal_yield_generated/test_cachetools_func.py::test_none_maxsize_disables_caching
+
+11 tests collected in 0.01s
+
+--- stderr ---

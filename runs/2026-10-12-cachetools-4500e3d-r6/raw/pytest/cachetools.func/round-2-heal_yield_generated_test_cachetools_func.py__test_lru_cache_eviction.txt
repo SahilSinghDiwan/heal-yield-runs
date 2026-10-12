@@ -1,0 +1,39 @@
+$ /Users/sahil/.venvs/heal-yield-run/bin/python -m pytest -q --no-header -p no:cacheprovider -p no:randomly --report-log /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+# cwd: /Users/sahil/Agentic_OS/Projects/heal-yield/.heal-yield-work/cachetools
+# returncode: 1
+# timed_out: False
+# duration_s: 0.0963
+--- stdout ---
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_lru_cache_eviction ____________________________
+
+    def test_lru_cache_eviction():
+        f = make_counter()
+        cached_f = func.lru_cache(maxsize=2)(f)
+    
+        # Populate cache
+        assert cached_f("a") == "aa"
+        assert cached_f("b") == "bb"
+        assert f.calls["cnt"] == 2
+    
+        # Access 'a' to make it most-recently used
+        assert cached_f("a") == "aa"
+        assert f.calls["cnt"] == 2  # still cached
+    
+        # Insert new key, should evict 'a' (implementation evicts the oldest entry)
+        assert cached_f("c") == "cc"
+        assert f.calls["cnt"] == 3
+    
+        # 'a' should be recomputed
+        assert cached_f("a") == "aa"
+>       assert f.calls["cnt"] == 4
+E       assert 3 == 4
+
+heal_yield_generated/test_cachetools_func.py:88: AssertionError
+- generated report log file: /Users/sahil/Agentic_OS/Projects/heal-yield-runs/runs/2026-10-12-cachetools-4500e3d-r6/raw/pytest/cachetools.func/round-2-heal_yield_generated_test_cachetools_func.py__test_lru_cache_eviction.jsonl -
+=========================== short test summary info ============================
+FAILED heal_yield_generated/test_cachetools_func.py::test_lru_cache_eviction
+1 failed in 0.02s
+
+--- stderr ---
